@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>GoHelping</title>
+
+  <!-- BIBLIOTECAS PARA O GLOBO -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.41.2/dist/globe.gl.min.js"></script>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <h1>GoHelping</h1>
+    <nav>
+      <ul>
+        <li><a href="/src/ frontend/index.html">Início</a></li>
+        <li><a href="../LocaldeAjuda/RegistroLocal.html">Registrar Local de Ajuda</a></li>
+        <li><a href="../MapaMundi/MapaMundi.html">Mapa Mundial</a></li>
+        <li><a href="../ frontend/pages/Perfil/PerfilUsuario">Meu Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <hr>
+
+  <main>
+    <!-- BARRA DE BUSCA -->
+    <section>
+      <form action="#" method="get">
+        <label for="busca">Buscar país ou região para ajudar:</label>
+        <input type="search" id="busca" name="busca" placeholder="Ex: Venezuela,Brasil...">
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <br>
+
+    <!-- GLOBO -->
+    <section>
+      <h2>Onde há uma necessidade, existe uma chance de ajudar.</h2>
+      
+      <div id="globo-3d"></div>
+    </section>
+
+    <hr>
+
+    <!-- LOCAIS DE AJUDA -->
+    <section>
+      <h3>Pontos de Ajuda Recentes</h3>
+
+      <!-- CARD 1 -->
+      <article>
+        <h4>[Centro de Coleta🏠] Estado Miranda — Venezuela</h4>
+        <p>Las Mercedes, Caracas, Iglesia Nuestra Señora de Las Mercedes</p>
+        <p><small>Publicado em: 13-set, 16:30 p.m.</small></p>
+        <a href="detalhes1.html">Ver detalhes</a>
+      </article>
+
+      <br>
+
+      <!-- CARD 2 -->
+      <article>
+        <h4>[Centro Veterinário🐾] Estado Miranda — Venezuela</h4>
+        <p> Av.González Rincones, Caracas 1080</p>
+        <p><small>Publicado em: 17-set, 04:25 a.m.</small></p>
+        <a href="detalhes2.html">Ver detalhes</a>
+      </article>
+
+     <br>
+
+      <!-- CARD 3 -->
+      <article>
+        <h4>[Centro Médico🏥] Estado Miranda — Venezuela</h4>
+        <p> Av. Eraso, Plaza El Estanque Urb, Caracas 1011</p>
+        <p><small>Publicado em: 17-set, 22:45 p.m.</small></p>
+        <a href="detalhes3.html">Ver detalhes</a>
+      </article>
+      
+     <br>
+
+      <!-- CARD 4 -->
+      <article>
+        <h4>[ONG ⛑️] Estado Miranda — Venezuela</h4>
+        <p> Monumento a la Paz, Bello Monte, Caracas</p>
+        <p><small>Publicado em: 20-set, 12:06 p.m.</small></p>
+        <a href="detalhes4.html">Ver detalhes</a>
+      </article>
+    </section>
+  </main>
+
+  <!-- CÓDIGO DO GLOBO -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var container = document.getElementById('globo-3d');
+      // Pontos no globo que precisam de ajuda (latitude, longitude e nome)
+      var locaisDeAjuda = [
+        { lat: -10.4806, lng: -66.8983, name: "Venezuela - Desastres naturais", color: "red" },
+      ];
+
+      // Configuração do Globo
+      var globo = Globe()(container)
+        .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
+        .pointsData(locaisDeAjuda)
+        .pointLat('lat')
+        .pointLng('lng')
+        .pointColor('color')
+        .pointRadius(1.2)
+        .pointLabel('name')
+        .width(400)
+        .height(350);
+
+      // Para ele girar automaticamente
+      globo.controls().autoRotate = true;
+      globo.controls().autoRotateSpeed = 1.5;
+    });
+  </script>
+
+</body>
+</html>

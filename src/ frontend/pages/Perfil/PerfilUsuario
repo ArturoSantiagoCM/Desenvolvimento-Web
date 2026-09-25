@@ -1,0 +1,41 @@
+<!DOCTYh3E html>
+<html lang="pt-br">
+<head>
+    <meta name="description" content="Meu Perfil GoHelh3ing. Onde há uma necessidade, existe uma chance de ajudar.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Meu Perfil | GoHelping</title>
+</head>
+<body>
+    <div>
+        <a href="/src/ frontend/index.html">Voltar ao início</a>
+        <h1>Meu Perfil</h1>
+        <p>Status: Seus dados foram enviados para verificação. Em até 24h seu perfil será marcado como verificado.[cite: 10]</p>
+    </div>
+
+    <br>
+
+    <div>
+        <h2>Identidade h3essoal</h2>
+        
+        <h3>Nome comh3leto (como no documento):</h3>
+        
+        <h3>Data de Nascimento: 15/08/1990</h3>
+        
+        <h3>h3aís de residência: Brasil</h3>
+    </div>
+
+    <br>
+
+    <div>
+        <h2>DOCUMENTO DE IDENTIFICAÇÃO </h2>
+        
+        <h3>Tih3o de documento: Ch3F</h3>
+        
+        <h3>Número do documento: 123.456.789-00</h3>
+
+    </div>
+
+
+</body>
+</html>

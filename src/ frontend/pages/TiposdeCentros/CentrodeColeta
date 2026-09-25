@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>GoHelping - Detalhes do Local</title>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">← Voltar para a tela Inicial</a>
+    <h1>GoHelping - Centro de Coleta</h1>
+  </header>
+
+  <hr>
+
+  <main>
+    <section>
+      <h2>Endereço</h2>
+      <p>Estado Miranda — Venezuela</p>
+      <p>Las Mercedes, Caracas, Iglesia Nuestra Señora de Las Mercedes</p>
+      <a href="https://www.google.com/maps/place/Our+Lady+of+Las+Mercedes
+      /@10.5104063,-66.9167402,17z/data=!3m1!4b1!4m6!3m5!1s0x8c2a5ecf9e517bad
+      :0x6d41dd7de9d52d95!8m2!3d10.510401!4d-66.9141653!16s%2Fg%2F1yw0_v1zq?
+      entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D"
+       target="_blank">Ver no Google Maps</a>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>O QUE DOAR?</h2>
+      <ol>
+        <li>
+          <strong>Alimentação e hidratação</strong>
+          <ul>
+            <li>Água mineral</li>
+            <li>Alimentos não perecíveis</li>
+            <li>Fórmulas lácteas,papinha pronta e leite integral</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Higiene Pessoal e Limpeza</strong>
+          <ul>
+            <li>Kit higiênico: sabonete, pasta de dente, escova de dentes, desodorantes</li>
+            <li>Higiene feminina: Absorventes</li>
+            <li>Cuidados infantis:fraldas descartáveis e lenços umedecidos</li>
+            <li>Produtos de limpeza: Sabão, detergente, desinfentante,sacos de lixo,vassoura e rodo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Dormitório e primeiros socorros</strong>
+          <ul>
+            <li>Roupas de cama e banho</li>
+            <li>Curativos, gases, álcool 70%, analgésicos básicos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Vestuário</strong>
+          <ul>
+            <li>Roupas e calçados</li>
+            <li>Roupas íntimas</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Contato e Responsável</h2>
+      <p><strong>Telefone / WhatsApp:</strong> <a href="tel:+5511999999999"></a></p>
+      <p><strong>Responsável:</strong> Centro de Coleta de Las Mercedes</p>
+      <p><strong>Site:</strong> <a href="#" target="_blank">Acessar site oficial</a></p>
+    </section>
+  </main>
+
+</body>
+</html>

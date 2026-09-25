@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Cuenta - Paso 2 | GoHelping</title>
+    <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
+        <h1>Verificar Conta</h1>
+        <h4>Identidade verificada gera mais confiança</h4>
+    </div>
+    
+    <form action="../cadastro pessoa/abadecadastropessoa3.html" method="GET">
+        <div>
+            <fieldset>
+                <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
+            <form>
+                <label for="Tdocumento">Tipo de documento</label>
+                <select id="Tdocumento" name="Tdocumento">
+                    <option value="">Selecione...</option>
+                    <option value="CPF">CPF</option>
+                    <option value="RG">RG</option>
+                    <option value="PASSAPORTE">PASSAPORTE</option>
+                </select>        
+                
+                <label for="CPF">Número do documento:</label>
+                <input type="number" id="CPF" name="CPF" pattern="\d{11}" placeholder="ex:000.000.000-00" required>
+                
+                <label for="Fcpf">Enviar foto do documento:</label>
+                <input type="file" id="Fcpf" name="Fcpf" required><br>
+            </form>
+            </fieldset>
+        </div>
+        <div>
+            <a href="../Pessoa/CP_3.HTML" class="boton">Continuar</a>
+        </div>
+        <div>
+            <a href="../Pessoa/CP_1.HTML" class="boton">Voltar</a>
+        </div>
+    </form>
+</body>
+</html>

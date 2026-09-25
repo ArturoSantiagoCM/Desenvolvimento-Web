@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Conta - Passo 1 | GoHelping</title>
+    <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
+        <h1>Verificar Conta</h1>
+        <h4>Identidade verificada gera mais confiança</h4>
+    </div>
+    
+    <form action="../Pessoa/CP_2.HTML" method="GET">
+        <div>
+            <fieldset>
+                <legend>Identidade Pessoal</legend>
+                <form>
+                <label for="nome">Nome completo (como no documento):</label>
+                <input type="text" id="nome" name="nome" placeholder="Gustavo Alencar" required><br>
+                
+                <label for="datan">Data de Nascimento:</label>
+                <input type="date" id="datan" name="datan"><br>
+                
+                <label for="paises">País de residência:</label>
+                <select id="paises" name="pais">
+                    <option value="">Selecione...</option>
+                    <option value="br">Brasil</option>
+                    <option value="pt">Portugal</option>
+                    <option value="ar">Argentina</option>
+                    <option value="us">Estados Unidos</option>
+                    <option value="jp">Japão</option>
+                </select>
+                </form>
+            </fieldset>
+        </div>
+        <div>
+            <a href="../Pessoa/CP_2.HTML" class="boton">Continuar</a>
+        </div>
+    </form>
+</body>
+</html>

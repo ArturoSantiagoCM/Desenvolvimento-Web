@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>GoHelping Mapa Mundi</title>
+    <meta name="description" content="Mapa mundi do GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CSS do Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+<style>
+    body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+    
+    #map-container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+    
+    #mapa {
+      height: 100%;
+      width: 100%;
+      cursor: grab;
+    }
+    
+    #mapa:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+<body>
+    <div>
+        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
+        <h1>Mapa de GoHelping</h1>
+        <h4>Emergências verificadas · GoHelping</h4>
+    </div>
+
+<div>
+  <div id="map-container">
+    <div id="mapa"></div>
+
+  <!-- Script do Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <script>
+    // 1. Inicializa o mapa
+    const mapa = L.map('mapa').setView([17.0, 19.0], 3  );
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+      maxZoom: 19
+    }).addTo(mapa);
+  </script>
+</div>
+
+</body>
+</html>
