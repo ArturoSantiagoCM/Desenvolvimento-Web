@@ -18,6 +18,9 @@
             <fieldset>
                 <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
             <form>
+                 <label for="email">Email:</label><br>
+                 <input type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required><br><br>
+                 <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
                 <label for="Tdocumento">Tipo de documento</label>
                 <select id="Tdocumento" name="Tdocumento">
                     <option value="">Selecione...</option>
