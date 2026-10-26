@@ -143,8 +143,172 @@ InputEmail.addEventListener('blur', (e) => {
 });
 
 //--------------------------------------------------------------------------------
+/**Organização / ONG*/
+/**MÁXIMO DE CARACTERES*/
+const MaxCaracteresONG = 50;
+const ONG = document.getElementById("ong");
+const CloseLimitONG = MaxCaracteresONG * 0.8;
+const ErroONGSpan = document.getElementById("erro-ong");
 
-/**Descricao JAVASCRIPT*/
+ONG.addEventListener('input', () => {
+    const CountingValueONG = ONG.value.length;
+
+    if (CountingValueONG >= CloseLimitONG){
+        CountingCaracters.textContent = `${CountingValueONG} / ${MaxCaracteresONG}`;
+    }
+    else {
+        CountingCaracters.textContent = "";
+    }
+
+});
+
+//--------------------------------------------------------------------------------
+/**Site/Red Social(opcional)*/
+
+const RedSocial = document.getElementById("site");
+
+ONG.addEventListener('blur', () => {
+    const RedSocialSite = RedSocial;
+});
+
+//--------------------------------------------------------------------------------
+/**Tipo de emergência*/
+
+const Tipo = document.getElementById("site");
+
+ONG.addEventListener('blur', () => {
+    const tipofix = Tipo;
+});
+
+//--------------------------------------------------------------------------------
+/**País:*/
+/** MAPA INTERATIVO GLOBAL (Leaflet + OpenStreetMap) */
+
+// 1. Inicializa o mapa. Coordenadas configuradas para Campinas/SP como padrão para o MVP
+const mapa = L.map('meu-mapa').setView([-22.834, -47.196], 5);
+
+// 2. Carrega o visual do mapa (Servidor HOT OSM - Ideal para projetos humanitários)
+L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">HOT</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OSM France</a>',
+    maxZoom: 15
+}).addTo(mapa);
+
+// 3. Cria o pino ARRASTÁVEL (draggable: true)
+const pino = L.marker([-22, -47], { draggable: true }).addTo(mapa);
+
+// Referências dos campos ocultos no HTML
+const inputLat = document.getElementById('latitude');
+const inputLng = document.getElementById('longitude');
+
+// Função para salvar as coordenadas nos campos invisíveis do HTML
+function atualizarCoordenadas(lat, lng) {
+    inputLat.value = lat;
+    inputLng.value = lng;
+}
+
+// Salva a posição inicial padrão
+atualizarCoordenadas(-22, -47);
+
+// ---------------------------------------------------------
+// AÇÃO A: O QUE ACONTECE QUANDO A PESSOA ARRASTA O PINO?
+// ---------------------------------------------------------
+pino.on('dragend', function () {
+    const posicao = pino.getLatLng(); // Pega a nova posição exata onde soltaram o dedo/mouse
+    atualizarCoordenadas(posicao.lat, posicao.lng);
+});
+
+// ---------------------------------------------------------
+// AÇÃO B: O QUE ACONTECE QUANDO A PESSOA CLICA EM "BUSCAR"?
+// ---------------------------------------------------------
+document.getElementById('btn-buscar').addEventListener('click', () => {
+    const enderecoDigitado = document.getElementById('busca-endereco').value;
+    
+    if (!enderecoDigitado) return; // Se estiver vazio, não faz nada
+
+    // Chama a API gratuita do Nominatim para transformar texto em coordenadas
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${enderecoDigitado}`)
+        .then(resposta => resposta.json())
+        .then(dados => {
+            if (dados.length > 0) {
+                // Se achou, pega as coordenadas do primeiro resultado
+                const latEncontrada = dados[0].lat;
+                const lngEncontrada = dados[0].lon;
+
+                // Voa com o mapa e move o pino para o local encontrado
+                mapa.setView([latEncontrada, lngEncontrada], 16);
+                pino.setLatLng([latEncontrada, lngEncontrada]);
+                
+                // Atualiza nossos campos escondidos
+                atualizarCoordenadas(latEncontrada, lngEncontrada);
+            } else {
+                alert("Endereço não encontrado pelo texto. Por favor, aproxime o mapa e arraste o pino até o local.");
+            }
+        })
+        .catch(erro => console.error("Erro na busca de endereço:", erro));
+});
+
+// ---------------------------------------------------------
+// AÇÃO C: PUXAR A LOCALIZAÇÃO DO USUÁRIO AO ENTRAR NA PÁGINA
+// ---------------------------------------------------------
+if ('geolocation' in navigator) {
+    // Pede a localização para o navegador
+    navigator.geolocation.getCurrentPosition(
+        function(posicao) {
+            const latUsuario = posicao.coords.latitude;
+            const lngUsuario = posicao.coords.longitude;
+
+            // Voa com o mapa e move o pino para a localização exata do GPS da pessoa
+            mapa.setView([latUsuario, lngUsuario], 5);
+            pino.setLatLng([latUsuario, lngUsuario]);
+            
+            // Salva as novas coordenadas nos campos escondidos
+            atualizarCoordenadas(latUsuario, lngUsuario);
+        },
+        function(erro) {
+            // Se a pessoa recusar ou der erro, o mapa simplesmente continua no local padrão (Campinas)
+            console.warn("Localização negada ou indisponível. Mantendo no local padrão. Erro:", erro.message);
+        },
+        {
+            enableHighAccuracy: true, // Força o uso do GPS (melhor precisão)
+            timeout: 5000 // Tempo máximo de espera para achar o local (10 segundos)
+        }
+    );
+} else {
+    console.warn("Geolocalização não é suportada por este navegador.");
+}
+/** Carregar lista de Países da API */
+const DataListPaises = document.getElementById('lista-paises');
+
+// Fazemos a requisição para a API (pedindo apenas o campo de traduções para ficar mais rápido)
+fetch('https://restcountries.com/v3.1/all?fields=translations') 
+    .then(resposta => resposta.json())
+    .then(dados => {
+        // 1. Extraímos o nome em português de cada país
+        let nomesPaises = dados.map(pais => pais.translations.por.common);
+
+        // 2. Colocamos em ordem alfabética (A-Z)
+        nomesPaises.sort();
+
+        // 3. Criamos as <option> e colocamos dentro do <datalist>
+        nomesPaises.forEach(nome => {
+            const opcao = document.createElement('option');
+            opcao.value = nome;
+            DataListPaises.appendChild(opcao);
+        });
+    })
+    .catch(erro => {
+        console.error("Erro ao carregar a lista de países:", erro);
+        // Fallback básico caso a API falhe por falta de internet
+        DataListPaises.innerHTML = `
+            <option value="Brasil">
+            <option value="Venezuela">
+            <option value="Colômbia">
+            <option value="Argentina">
+        `;
+    });
+
+//--------------------------------------------------------------------------------
+/**Validar Descrição*/
 
 /**MÁXIMO DE CARACTERES*/
 
@@ -193,4 +357,106 @@ if (DesLimpo.length !== 0) {
         ErroDesSpan.style.display = "none";
         ErroDesSpan.textContent = ""; }
          }
+});
+
+//--------------------------------------------------------------------------------
+/**endereço*/
+
+const MaxCarEnd = 100;
+const MinCarEnd = 6;
+const CountingCaractersEnd = document.getElementById('endereçoCounter');
+const endereço = document.getElementById("endereço");
+const ErroEndSpan = document.getElementById("endereço");
+
+endereço.addEventListener('input', () => {
+    const CountingValue = endereço.value.length;
+
+    if(CountingValue > 0){
+       CountingCaractersEnd.textContent = `${CountingValue} / ${MaxCarEnd}`;
+                         }
+    else {
+        CountingCaractersEnd.textContent = "";
+        ErroEndSpan.textContent = ""; 
+        endereço.setAttribute('aria-invalid', 'false');
+    }
+});
+
+/**Tirar Espaços em Branco no comça e final*/
+
+endereço.addEventListener('blur', () => {
+    endereço.value = endereço.value.trim().replace(/\n{3,}/g, '\n\n');
+ /*uma veriricação para retornar um erro que possa ser lido pelo google para deficientes visuais**/
+    const EndLimpo = endereço.value;
+
+if (EndLimpo.length !== 0) {
+       
+    if (EndLimpo.length < MinCarEnd || EndLimpo.length > MaxCarEnd) {
+
+        endereço.setAttribute("aria-invalid", "true");
+        if (ErroEndSpan) {
+            ErroEndSpan.style.display = "block";
+            ErroEndSpan.textContent = "Numero de caracteres invalido, deve ser maior a 7 e menor a 100"; 
+        }
+        return; 
+    }
+
+    }
+    else{    
+     endereço.setAttribute("aria-invalid", "false");
+    if (ErroEndSpan) {
+        ErroEndSpan.style.display = "none";
+        ErroEndSpan.textContent = ""; }
+         }
+});
+
+//--------------------------------------------------------------------------------
+/**Necessidades*/
+const lista = document.getElementById("lista");
+const novo = document.getElementById("novo");
+const add = document.getElementById("add");
+const inputOculto = document.getElementById("itens-formatados");
+
+// A marca que diferencia cada palavra na string final
+const separador = "|"; 
+
+// [2] Função nova: Lê a lista visual e cria a string formatada
+function atualizarStringParaLocalStorage() {
+    // Procura todos os <span> dentro da lista
+    const spans = lista.querySelectorAll("span");
+    
+    // Transforma os spans em uma lista apenas com os textos
+    const textos = Array.from(spans).map(span => span.textContent);
+    
+    // Junta tudo usando o separador (Ex: "Água|Roupas|Leite") e salva no input oculto
+    inputOculto.value = textos.join(separador);
+}
+
+// [3] Cria <li> com botão remover
+function criarItem(texto) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+        <span>${texto}</span>
+        <button type="button" class="remover">Remover</button>
+    `;
+    return li;
+}
+
+// [4] Adiciona novo item
+add.addEventListener("click", () => {
+    const v = novo.value.trim();
+    if (!v) return; // Não faz nada se estiver vazio
+    
+    lista.appendChild(criarItem(v)); // Coloca na tela
+    novo.value = ""; // Limpa o campo para a próxima digitação
+    
+    atualizarStringParaLocalStorage(); // Atualiza a string invisível!
+});
+
+// [5] Delegação: ouve cliques no <ul> e decide pelo target (Remover)
+lista.addEventListener("click", (e) => {
+    if (e.target.matches("button.remover")) {
+        e.target.closest("li").remove(); // Tira da tela
+        
+        atualizarStringParaLocalStorage(); // Atualiza a string invisível!
+    }
 });

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>GoHelping - Registrar Local</title>
-   <script src="../../../script/Cadastros/LocaldeAjuda/RegistroLocal.js" defer></script>
-</head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../../../script/Cadastros/LocaldeAjuda/RegistroLocal.js" defer></script>
 </head>
 <body>
 
-  <header>
-    <a href="/src/ frontend/index.html">← Voltar para a tela Inicial</a>
+    <a href="../../../index.html">← Voltar para a tela Inicial</a>
     <h1>Registrar Local de Ajuda</h1>
-  </header>
+
 
   <hr>
 
@@ -21,8 +21,8 @@
       <!-- CONTATO -->
       <fieldset>
         <legend>Passo 1: Seus Dados de Contato</legend>
-        <form>
-        <label for="nome">Nome completo (como no documento):</label>
+       
+        <label for="nome">Nome completo (como no documento):</label><br>
         <input type="text" id="nome" name="nome" placeholder="Gustavo Alencar" maxlength="100" aria-describedby="nameCounter erro-nome" aria-invalid="false" required><br>
         <span id="erro-nome" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
         <span id="nameCounter"></span>
@@ -34,19 +34,21 @@
         <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(xx) xxxxx-xxxx" aria-describedby="erro-telefone" aria-invalid="false" required><br><br>
         <span id="erro-telefone" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
         <label for="ong">Organização / ONG (opcional):</label><br>
-        <input type="text" id="ong" name="ong" maxlength="150" placeholder="Ex: Cruz Vermelha - Filial Campinas"><br><br>
+        <input type="text" id="ong" name="ong" maxlength="50" aria-describedby="ongCounter erro-nome" aria-invalid="false"><br>
+        <span id="erro-ong" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+        <span id="ongCounter"></span>
 
         <label for="site">Site/Red Social(opcional):</label><br>
         <input type="text" id="site" name="site" maxlength="100"><br><br>
-        </form>
-      </fieldset>
+       
+      
 
       <br>
-
+</fieldset>
       <!-- LOCALIZAÇÃO -->
       <fieldset>
         <legend>Passo 2: Localização do Ponto de Ajuda</legend>
-        <form>
+       
         <label for="tipo">Tipo de emergência:</label><br>
         <select id="tipo" name="tipo" required>
           <option value="">Selecionar...</option>
@@ -56,30 +58,45 @@
           <option value="ong">ONG</option>
         </select><br><br>
 
-        <label for="pais">País:</label><br>
-        <input type="text" id="pais" name="pais" placeholder="Ex: Venezuela, Brasil..." required><br><br>
+        <label for="busca-endereco">País/Cidade:</label><br>
+      <input type="text" id="busca-endereco" placeholder="Ex: Brasil" style="flex-grow: 1;">
+      <button type="button" id="btn-buscar">Buscar no Mapa</button>
 
-        <label for="cidade">Cidade / Município:</label><br>
-        <input type="text" id="cidade" name="cidade" placeholder="Ex: Caracas, São Paulo..." required><br><br>
-
-        <label for="endereço">Endereço completo:</label><br>
-        <textarea id="endereço" name="endereço" rows="3" cols="40" placeholder="Ex: Rua, Número, Bairro..." required></textarea><br><br>
-      </form>
-      </fieldset>
+    <div id="meu-mapa" style="height: 300px ; border-radius: 8px; border: 1px solid #161616; ;"></div>
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+<br>
+      
+      
 
       <br>
 
-      <!-- O QUE DOAR -->
-      <fieldset>
-        <form>
-        <legend>Passo 3: Descrição e Necessidades</legend>
-        <label for="descricao">Descrição do local:</label><br>
+        <label for="endereço">Endereço completo:</label><br>
+        <textarea id="endereço" name="endereço" rows="4" cols="40" maxlength="100" placeholder="R. Dom Humberto Mazoni - Parque dos Jacarandás, Campinas - SP..." aria-describedby="endereçoCounter endereçoError"></textarea><br><br>
+        <span id="endereçoError" style="color: #d93025; font-size: 0.85rem;"></span>
+        <span id="endereçoCounter" style="font-size: 0.85rem; color: #666;"></span>
+      
+
+      <br>
+<label for="descricao">Descrição do local:</label><br>
         <textarea id="descricao" name="descricao" rows="4" cols="40" maxlength="500" placeholder="Descreva a situação do local, quem é atendido, como funciona o ponto de ajuda..." aria-describedby="descricaoCounter descricaoError"></textarea><br><br>
         <span id="descricaoError" style="color: #d93025; font-size: 0.85rem;"></span>
         <span id="descricaoCounter" style="font-size: 0.85rem; color: #666;"></span>
-        <label for="doações">O que é necessário doar?</label><br>
-        <textarea id="doações" name="doações" rows="4" cols="40" placeholder="Ex: Alimentos, Roupas, Medicamentos..."></textarea>
-      </form>
+
+      
+     
+      </fieldset>
+      <fieldset>
+        <legend>Passo 3: Necessidades</legend>
+        
+        <ul id="lista"></ul>
+
+<!-- Controles de entrada -->
+<input id="novo" placeholder="Novo item (Ex: Água, Roupas)">
+<button type="button" id="add">Adicionar</button>
+
+<!-- O SEGREDO: Campo invisível que guarda a string com a "marca" separadora -->
+<input type="hidden" id="itens-formatados">
       </fieldset>
 
       <br>

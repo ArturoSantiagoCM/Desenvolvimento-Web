@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>GoHelping - Registrar Local</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../../GoHelping/tests/scripttest.js" defer></script>
+</head>
+</head>
+<body>
+
+  <header>
+    <a href="/src/ frontend/index.html">← Voltar para a tela Inicial</a>
+    <h1>Registrar Local de Ajuda</h1>
+  </header>
+
+  <hr>
+
+  <main>
+    <form action="#" method="post">
+      
+      <!-- CONTATO -->
+      <fieldset>
+        <legend>Passo 1: Seus Dados de Contato</legend>
+        <form>
+        <label for="nome">Nome completo (como no documento):</label>
+        <input type="text" id="nome" name="nome" placeholder="Gustavo Alencar" maxlength="100" aria-describedby="nameCounter erro-nome" aria-invalid="false" required><br>
+        <span id="erro-nome" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+        <span id="nameCounter"></span>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required><br><br>
+        <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+        <label for="telefone">Telefone/WhatsApp:</label><br>
+        <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(xx) xxxxx-xxxx" aria-describedby="erro-telefone" aria-invalid="false" required><br><br>
+        <span id="erro-telefone" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+        <label for="ong">Organização / ONG (opcional):</label><br>
+        <input type="text" id="ong" name="ong" maxlength="50" aria-describedby="ongCounter erro-nome" aria-invalid="false"><br>
+        <span id="erro-ong" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+        <span id="ongCounter"></span>
+
+        <label for="site">Site/Red Social(opcional):</label><br>
+        <input type="text" id="site" name="site" maxlength="100"><br><br>
+        </form>
+      </fieldset>
+
+      <br>
+
+      <!-- LOCALIZAÇÃO -->
+      <fieldset>
+        <legend>Passo 2: Localização do Ponto de Ajuda</legend>
+        <form>
+        <label for="tipo">Tipo de emergência:</label><br>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecionar...</option>
+          <option value="coleta">Centro de Coleta</option>
+          <option value="veterinario">Centro Veterinário</option>
+          <option value="medico">Centro Médico</option>
+          <option value="ong">ONG</option>
+        </select><br><br>
+
+        <label for="busca-endereco">Busque o endereço ou arraste o pino vermelho no mapa:</label><br>
+<div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <!-- Campo onde a pessoa digita (ex: PUC Campinas) -->
+    <input type="text" id="busca-endereco" placeholder="Ex: PUC Campinas, São Paulo..." style="flex-grow: 1;">
+    <button type="button" id="btn-buscar">Buscar no Mapa</button>
+</div>
+
+<!-- Onde o mapa interativo vai aparecer -->
+<div id="meu-mapa" style="height: 300px; width: 80%; border-radius: 8px; border: 1px solid #161616; z-index: 1;"></div>
+
+<!-- 3. O SEGREDO: Estes campos ficam invisíveis (hidden). 
+     O JavaScript vai guardar as coordenadas matemáticas exatas aqui dentro. -->
+<input type="hidden" id="latitude" name="latitude">
+<input type="hidden" id="longitude" name="longitude">
+<br>
+      </form>
+      </fieldset>
+
+      <br>
+
+      <!-- O QUE DOAR -->
+      <fieldset>
+        <form>
+        <legend>Passo 3: Descrição e Necessidades</legend>
+        <label for="descricao">Descrição do local:</label><br>
+        <textarea id="descricao" name="descricao" rows="4" cols="40" maxlength="500" placeholder="Descreva a situação do local, quem é atendido, como funciona o ponto de ajuda..." aria-describedby="descricaoCounter descricaoError"></textarea><br><br>
+        <span id="descricaoError" style="color: #d93025; font-size: 0.85rem;"></span>
+        <span id="descricaoCounter" style="font-size: 0.85rem; color: #666;"></span>
+        <label for="doações">O que é necessário doar?</label><br>
+        <textarea id="doações" name="doações" rows="4" cols="40" placeholder="Ex: Alimentos, Roupas, Medicamentos..."></textarea>
+      </form>
+      </fieldset>
+
+      <br>
+
+      <button type="submit">Enviar Local para Análise</button>
+    </form>
+  </main>
+
+</body>
+</html>
