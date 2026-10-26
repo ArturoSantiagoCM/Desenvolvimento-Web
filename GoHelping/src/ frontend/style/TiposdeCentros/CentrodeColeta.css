@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-azul: #1a4fc4;
+  --cor-azul-claro: #dbe6fb;
+  --cor-escuro: #1b2540;
+  --cor-cinza: #6b7686;
+  --cor-fundo: #f3f6fb;
+  --cor-topo: #eef2f8;
+  --cor-borda: #dfe5ee;
+  --cor-branco: #ffffff;
+  --cor-verde: #a8f58c;
+  --cor-verde-escuro: #2f6b1d;
+  --fonte: "DM Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --espaco: clamp(16px, 0.5rem + 2vw, 24px);
+  --largura-max: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--cor-fundo);
+  color: var(--cor-escuro);
+  font-family: var(--fonte);
+  line-height: 1.5;
+}
+
+/* as linhas separadoras não aparecem no design */
+hr {
+  display: none;
+}
+
+/* ===== Topo (link voltar + título) ===== */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: var(--espaco)
+    max(var(--espaco), env(safe-area-inset-right),
+      calc((100% - var(--largura-max)) / 2))
+    var(--espaco)
+    max(var(--espaco), env(safe-area-inset-left),
+      calc((100% - var(--largura-max)) / 2));
+  background: var(--cor-topo);
+}
+
+header a {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--cor-azul-claro);
+  color: var(--cor-azul);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cor-azul);
+}
+
+/* ===== Painel branco (main) ===== */
+main {
+  width: min(100%, var(--largura-max));
+  margin: var(--espaco) auto 0;
+  padding: 24px var(--espaco) 40px;
+  background: var(--cor-branco);
+  border-radius: 24px 24px 0 0;
+}
+
+section {
+  min-width: 0;
+}
+
+/* ===== Títulos de seção ===== */
+h2 {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-escuro);
+}
+
+/* ===== 1) Endereço ===== */
+/* os dois <p> formam um cartão só (o de cima e o de baixo se encaixam) */
+main > section:nth-of-type(1) p {
+  margin: 0;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-branco);
+  overflow-wrap: anywhere;
+}
+
+main > section:nth-of-type(1) p:nth-of-type(1) {
+  padding: 10px 12px 2px;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  font-size: clamp(1.15rem, 1rem + 1vw, 1.4rem);
+}
+
+main > section:nth-of-type(1) p:nth-of-type(2) {
+  padding: 4px 12px 12px;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.8rem;
+  color: var(--cor-cinza);
+}
+
+/* botão verde "Ver no Google Maps" */
+main > section:nth-of-type(1) a {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 20px auto 0;
+  padding: 12px 20px;
+  border: 1px solid var(--cor-verde-escuro);
+  border-radius: 10px;
+  background: var(--cor-verde);
+  color: var(--cor-verde-escuro);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 2) O que doar ===== */
+main > section:nth-of-type(2) {
+  margin-top: 28px;
+}
+
+main > section:nth-of-type(2) h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.2rem);
+  line-height: 1.1;
+}
+
+ol {
+  margin: 0;
+  padding: 14px 14px 14px 32px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+ol > li + li {
+  margin-top: 8px;
+}
+
+ul {
+  margin: 2px 0 10px;
+  padding-left: 18px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* ===== 3) Contato e responsável ===== */
+main > section:nth-of-type(3) {
+  margin-top: 28px;
+}
+
+main > section:nth-of-type(3) h2 {
+  margin-bottom: 12px;
+  color: var(--cor-cinza);
+  text-transform: uppercase;
+}
+
+/* cada contato vira um cartão, um embaixo do outro */
+main > section:nth-of-type(3) p {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  overflow-wrap: anywhere;
+}
+
+main > section:nth-of-type(3) strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+}
+
+main > section:nth-of-type(3) a {
+  color: var(--cor-escuro);
+  text-decoration: none;
+}
+
+/* link do site (último contato) */
+main > section:nth-of-type(3) p:last-of-type a {
+  color: var(--cor-cinza);
+  text-decoration: underline;
+}
+
+:focus {
+  outline: 3px solid rgba(26, 79, 196, 0.25);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   TABLET (≥ 600px)
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --largura-max: 560px;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  ol {
+    font-size: 0.95rem;
+  }
+
+  main {
+    padding-top: 32px;
+  }
+}
+
+/* ============================================================
+   DESKTOP (≥ 960px)
+   ============================================================ */
+@media (min-width: 960px) {
+  :root {
+    --largura-max: 680px;
+  }
+
+  main {
+    margin-top: 32px;
+    padding-bottom: 64px;
+    border-radius: 24px;
+  }
+}
+
+/* ============================================================
+   HOVER: só com mouse
+   ============================================================ */
+@media (hover: hover) {
+  header a:hover,
+  main > section:nth-of-type(1) a:hover {
+    filter: brightness(0.95);
+  }
+
+  main > section:nth-of-type(3) a:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

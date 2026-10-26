@@ -26,7 +26,7 @@ const LOCAIS = [
         endereco: "Av. Eraso, Plaza El Estanque Urb, Caracas 1011",
         lat: 10.49, lng: -66.855,
         publicadoEm: "2026-09-17T22:45:00",
-        link: "pages/TiposdeCentros/CentroMédico.html"
+        link: "pages/TiposdeCentros/CentroMedico.html"
     },
     {
         id: "ong-1",

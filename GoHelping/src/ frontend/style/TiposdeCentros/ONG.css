@@ -1,0 +1,206 @@
+/* ===================================================
+   ONG - Detalhes do Local
+   (versão para HTML SEM classes: usa só seletores de tag)
+   =================================================== */
+
+* { box-sizing: border-box; }
+
+:root {
+  --cor-azul: #1a4fc4;
+  --cor-azul-claro: #dbe6fb;
+  --cor-escuro: #1b2540;
+  --cor-cinza: #6b7686;
+  --cor-fundo: #f3f6fb;
+  --cor-topo: #eef2f8;
+  --cor-borda: #dfe5ee;
+  --cor-branco: #ffffff;
+  --cor-verde: #a8f58c;
+  --cor-verde-escuro: #2f6b1d;
+  --cor-bege: #f5e6bf;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', system-ui, Helvetica, Arial, sans-serif;
+  color: var(--cor-escuro);
+  background: var(--cor-fundo);
+  line-height: 1.5;
+}
+
+hr { display: none; }
+
+/* ---------- TOPO ---------- */
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 84px;
+  padding: 24px 16px;
+  background: var(--cor-topo);
+}
+
+/* Botão redondo com seta (esconde o texto e mostra só a seta) */
+header a {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cor-azul-claro);
+  color: var(--cor-azul);
+  font-size: 0;               /* some com o texto "Voltar para a tela Inicial" */
+  text-decoration: none;
+}
+header a::before {
+  content: "←";
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+header h1 {
+  margin: 0 52px;             /* espaço para o botão não cobrir o título */
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--cor-azul);
+}
+
+/* ---------- PAINEL BRANCO ---------- */
+main {
+  width: min(100%, 480px);
+  margin: 16px auto 0;
+  padding: 24px 16px 32px;
+  background: var(--cor-branco);
+  border-radius: 24px 24px 0 0;
+}
+
+/* Selo "Centro Médico" criado pelo CSS (não precisa mexer no HTML) */
+main::before {
+  content: "🤝 ONG";
+  display: block;
+  width: min(100%, 320px);
+  margin: 0 auto 24px;
+  padding: 6px 16px;
+  border: 1px solid var(--cor-escuro);
+  border-radius: 14px;
+  background: var(--cor-bege);
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+/* ---------- ENDEREÇO (1ª seção) ---------- */
+main section:nth-of-type(1) h2 {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Os dois <p> formam o "cartão" juntos */
+main section:nth-of-type(1) p:nth-of-type(1) {
+  margin: 0;
+  padding: 8px 12px 0;
+  border: 1px solid var(--cor-borda);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  font-size: 1.4rem;
+}
+main section:nth-of-type(1) p:nth-of-type(2) {
+  margin: 0;
+  padding: 4px 12px 12px;
+  border: 1px solid var(--cor-borda);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.8rem;
+}
+
+/* Botão verde Google Maps */
+main section:nth-of-type(1) a {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding: 10px 18px;
+  border: 1px solid var(--cor-verde-escuro);
+  border-radius: 10px;
+  background: var(--cor-verde);
+  color: var(--cor-verde-escuro);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+main section:nth-of-type(1) a:hover { filter: brightness(0.95); }
+
+/* ---------- O QUE DOAR (2ª seção) ---------- */
+main section:nth-of-type(2) h2 {
+  margin: 28px 0 12px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+main section:nth-of-type(2) ol {
+  margin: 0;
+  padding: 14px 14px 14px 32px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  font-size: 0.85rem;
+}
+main section:nth-of-type(2) ul {
+  margin: 2px 0 10px;
+  padding-left: 18px;
+}
+
+/* ---------- CONTATO (3ª seção) ---------- */
+main section:nth-of-type(3) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+main section:nth-of-type(3) h2 {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-cinza);
+  text-transform: uppercase;
+}
+
+/* Cada campo vira uma caixinha; Telefone e Responsável lado a lado */
+main section:nth-of-type(3) p {
+  flex: 1 1 150px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+}
+main section:nth-of-type(3) p:nth-of-type(3) {
+  flex-basis: 100%;           /* Site ocupa a linha toda */
+}
+main section:nth-of-type(3) strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+}
+main section:nth-of-type(3) a {
+  color: var(--cor-escuro);
+  text-decoration: none;
+}
+main section:nth-of-type(3) p:nth-of-type(3) a {
+  color: var(--cor-cinza);
+  text-decoration: underline;
+}
+
+/* ---------- FOCO VISÍVEL ---------- */
+:focus {
+  outline: 3px solid rgba(26, 79, 196, 0.25);
+  outline-offset: 2px;
+}

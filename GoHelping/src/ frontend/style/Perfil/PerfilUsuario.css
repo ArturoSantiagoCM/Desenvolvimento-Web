@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-azul: #1a4fc4;
+  --cor-azul-claro: #dbe6fb;
+  --cor-roxo: #4550c8;
+  --cor-escuro: #1b2540;
+  --cor-cinza: #8a94a6;
+  --cor-fundo: #f9fbfe;
+  --cor-topo: #e6ecf5;
+  --cor-borda: #dfe5ee;
+  --cor-branco: #ffffff;
+  --cor-aviso-fundo: #fff6e0;
+  --cor-aviso-texto: #8a5a00;
+  --fonte: "DM Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --espaco: clamp(16px, 0.5rem + 2vw, 24px);
+  --largura-max: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 32px;
+  background: var(--cor-fundo);
+  color: var(--cor-escuro);
+  font-family: var(--fonte);
+  line-height: 1.5;
+}
+
+/* o espaçamento é controlado pelo CSS */
+br {
+  display: none;
+}
+
+/* ===== Cabeçalho (primeiro div: link + título + status) ===== */
+body > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: var(--espaco)
+    max(var(--espaco), env(safe-area-inset-right),
+      calc((100% - var(--largura-max)) / 2))
+    var(--espaco)
+    max(var(--espaco), env(safe-area-inset-left),
+      calc((100% - var(--largura-max)) / 2));
+  background: var(--cor-topo);
+}
+
+body > div:first-of-type a {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--cor-azul-claro);
+  color: var(--cor-azul);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+  font-weight: 700;
+  color: var(--cor-azul);
+}
+
+/* aviso de status */
+body > div:first-of-type p {
+  width: 100%;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #f1d58a;
+  border-radius: 12px;
+  background: var(--cor-aviso-fundo);
+  color: var(--cor-aviso-texto);
+  font-size: 0.85rem;
+}
+
+/* ===== Cartões (demais divs) ===== */
+body > div:nth-of-type(n + 2) {
+  width: min(100% - 2 * var(--espaco), var(--largura-max));
+  margin: var(--espaco) auto 0;
+  padding: 16px 20px 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px;
+  background: var(--cor-branco);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cor-roxo);
+}
+
+/* cada linha de dado */
+h3 {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cor-escuro);
+  overflow-wrap: anywhere;
+}
+
+:focus {
+  outline: 3px solid rgba(26, 79, 196, 0.25);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   TABLET (≥ 600px)
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --largura-max: 560px;
+  }
+
+  h2 {
+    font-size: 0.85rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  body > div:nth-of-type(n + 2) {
+    padding: 20px 28px 12px;
+  }
+}
+
+/* ============================================================
+   DESKTOP (≥ 960px)
+   ============================================================ */
+@media (min-width: 960px) {
+  :root {
+    --largura-max: 640px;
+  }
+
+  body > div:first-of-type {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+/* ============================================================
+   HOVER: só com mouse
+   ============================================================ */
+@media (hover: hover) {
+  body > div:first-of-type a:hover {
+    filter: brightness(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

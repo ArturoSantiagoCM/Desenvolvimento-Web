@@ -1,0 +1,338 @@
+:root {
+  --cor-primaria: #1a4fc4;
+  --cor-fundo: #f3f6fb;
+  --cor-trilho: #dde3ee;
+  --cor-borda: #d6deec;
+  --cor-texto: #1f2937;
+  --cor-placeholder: #8a94a6;
+  --cor-branco: #ffffff;
+  --fonte: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* espaçamento fluido: 16px no celular, até 24px em telas grandes */
+  --espaco: clamp(16px, 0.5rem + 2vw, 24px);
+
+  /* largura máxima do conteúdo (100% = sem limite no celular) */
+  --largura-max: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== Base (celular) =====
+   O padding lateral fica só no body: o link, o título e o formulário
+   alinham juntos e o conteúdo se centraliza quando passa da largura máxima. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding-left: max(var(--espaco), env(safe-area-inset-left),
+    calc((100% - var(--largura-max)) / 2));
+  padding-right: max(var(--espaco), env(safe-area-inset-right),
+    calc((100% - var(--largura-max)) / 2));
+  background: var(--cor-fundo);
+  font-family: var(--fonte);
+  color: var(--cor-texto);
+}
+
+/* ===== Topo (link voltar + título) ===== */
+body > a {
+  align-self: flex-start;
+  margin: var(--espaco) 0 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #dbe6fb;
+  color: var(--cor-primaria);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 12px 0 0;
+  padding: 0 0 var(--espaco);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+hr {
+  display: none;
+}
+
+/* ===== Conteúdo ===== */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--espaco) 0 32px;
+}
+
+main form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* o espaçamento passa a ser controlado pelo CSS */
+form br {
+  display: none;
+}
+
+fieldset {
+  min-width: 0; /* evita estourar a largura em telas pequenas */
+  margin: 0 0 32px;
+  padding: 0;
+  border: none;
+}
+
+legend {
+  padding: 0 0 var(--espaco);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+}
+
+/* ===== Rótulos ===== */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-texto);
+}
+
+/* ===== Campos ===== */
+input:not([type="hidden"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: var(--espaco);
+  padding: 14px 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  font-family: inherit;
+  font-size: 1rem; /* 16px: evita zoom automático no iPhone */
+  color: var(--cor-texto);
+}
+
+textarea {
+  min-height: 88px;
+  resize: none;
+  line-height: 1.4;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--cor-placeholder);
+}
+
+/* ===== Mensagens de erro e contadores ===== */
+form span {
+  font-size: 0.8rem;
+}
+
+[id$="Counter"] {
+  display: block;
+  margin: -8px 0 var(--espaco);
+  text-align: right;
+  color: var(--cor-placeholder);
+}
+
+/* ===== Mapa ===== */
+#busca-endereco {
+  margin-bottom: 8px;
+}
+
+#btn-buscar {
+  margin-bottom: var(--espaco);
+}
+
+#meu-mapa {
+  position: relative;
+  z-index: 0; /* isola os z-index internos do Leaflet (não cobre o botão fixo) */
+  /* !important para sobrepor o height fixo do style="" no HTML */
+  height: clamp(240px, 40vh, 460px) !important;
+  margin-bottom: var(--espaco);
+  overflow: hidden;
+}
+
+/* ===== Lista de necessidades (Passo 3): um item embaixo do outro ===== */
+#lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 var(--espaco);
+  padding: 0;
+  list-style: none;
+}
+
+#lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0; /* o espaço entre os itens vem do gap da lista */
+  padding: 12px 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: var(--cor-branco);
+  overflow-wrap: anywhere;
+}
+
+#lista li button {
+  flex-shrink: 0;
+  min-height: 44px; /* alvo de toque confortável */
+  padding: 6px 12px;
+  border: 1px solid var(--cor-primaria);
+  border-radius: 10px;
+  background: var(--cor-branco);
+  color: var(--cor-primaria);
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== Botões ===== */
+button {
+  min-height: 48px;
+  padding: 16px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#btn-buscar,
+#add {
+  width: 100%;
+  border: 1px solid var(--cor-primaria);
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+}
+
+/* botão Enviar: fixo na base da tela no celular */
+button[type="submit"] {
+  position: sticky;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 10;
+  width: 100%;
+  margin-top: auto;
+  border: 1px solid green;
+  background: green;
+  color: var(--cor-branco);
+  box-shadow: 0 0 0 12px var(--cor-fundo); /* cobre os campos atrás dele */
+}
+
+:focus {
+  outline: 3px solid rgba(26, 79, 196, 0.35);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   CELULAR GRANDE (≥ 480px)
+   ============================================================ */
+@media (min-width: 480px) {
+  input:not([type="hidden"]),
+  select,
+  textarea {
+    padding: 18px 16px;
+  }
+}
+
+/* ============================================================
+   TABLET (≥ 768px)
+   Continua em coluna única; só limita a largura e aumenta fontes
+   ============================================================ */
+@media (min-width: 768px) {
+  :root {
+    --largura-max: 720px;
+  }
+
+  legend {
+    font-size: 0.85rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  /* Enviar deixa de ser fixo e fica no fim do formulário */
+  button[type="submit"] {
+    position: static;
+    box-shadow: none;
+    margin-top: 16px;
+  }
+}
+
+/* ============================================================
+   DESKTOP (≥ 960px)
+   Coluna única, mais espaço ao redor
+   ============================================================ */
+@media (min-width: 960px) {
+  :root {
+    --largura-max: 800px;
+  }
+
+  main {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  main form > fieldset {
+    margin-bottom: 24px;
+  }
+
+  #meu-mapa {
+    height: clamp(300px, 45vh, 500px) !important;
+  }
+}
+
+/* ============================================================
+   HOVER: só em dispositivos com mouse (não gruda no toque)
+   ============================================================ */
+@media (hover: hover) {
+  button:hover {
+    filter: brightness(1.08);
+  }
+
+  #lista li button:hover {
+    background: #eef3fd;
+  }
+}
+
+/* ============================================================
+   CELULAR / TABLET DEITADO (pouca altura)
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  #meu-mapa {
+    height: 220px !important;
+  }
+
+  button[type="submit"] {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
