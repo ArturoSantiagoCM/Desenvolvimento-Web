@@ -1,0 +1,205 @@
+/* =========================================
+   VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   ========================================= */
+:root {
+    --primary-blue: #1d4ed8;
+    --text-main: #1e293b;
+    --bg-color: #f8fafc;
+    --white: #ffffff;
+    --gray-light: #f1f5f9;
+    --gray-border: #cbd5e1;
+    --gray-text: #64748b;
+    --conflict-red: #ef4444;
+    --humanitarian-orange: #f97316;
+    --flood-blue: #3b82f6;
+    --drought-yellow: #ca8a04;
+    --earthquake-purple: #9333ea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+body, html {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* =========================================
+   CABEÇALHO (MOBILE-FIRST)
+   ========================================= */
+header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    width: 100%;
+    z-index: 1000;
+    gap: 1rem;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: #eff6ff;
+    color: var(--primary-blue);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.back-button:hover {
+    background-color: #dbeafe;
+}
+
+.header-titles h1 {
+    font-size: 1.15rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.header-titles p {
+    font-size: 0.75rem;
+    color: var(--gray-text);
+}
+
+/* =========================================
+   LEGENDA DE EMERGÊNCIAS
+   ========================================= */
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 0.75rem;
+    color: var(--text-main);
+    z-index: 999;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 500;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-conflito { background-color: var(--conflict-red); }
+.dot-humanitaria { background-color: var(--humanitarian-orange); }
+.dot-inundacao { background-color: var(--flood-blue); }
+.dot-secafome { background-color: var(--drought-yellow); }
+.dot-terremoto { background-color: var(--earthquake-purple); }
+
+/* =========================================
+   CONTAINER DO MAPA
+   ========================================= */
+#map-container {
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+#mapa {
+    height: 100%;
+    width: 100%;
+    cursor: grab;
+    z-index: 1;
+}
+
+#mapa:active {
+    cursor: grabbing;
+}
+
+/* =========================================
+   BADGE FLUTUANTE DE VERIFICAÇÃO
+   ========================================= */
+.verified-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    background: var(--white);
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+    z-index: 1000;
+}
+
+.verified-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+}
+
+/* Estilo para marcadores personalizados do Leaflet */
+.custom-map-marker {
+    background: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border: 1px solid var(--gray-border);
+    white-space: nowrap;
+}
+
+/* =========================================
+   VERSÃO DESKTOP (TELA COMPLETA E EXPANDIDA)
+   ========================================= */
+@media (min-width: 1024px) {
+    body {
+        max-width: 100%;
+    }
+
+    header {
+        padding: 1.25rem 3rem;
+    }
+
+    .header-titles h1 {
+        font-size: 1.4rem;
+    }
+
+    .header-titles p {
+        font-size: 0.85rem;
+    }
+
+    .map-legend {
+        padding: 1rem 3rem;
+        font-size: 0.85rem;
+    }
+
+    .verified-badge {
+        bottom: 32px;
+        left: 32px;
+        padding: 0.8rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}

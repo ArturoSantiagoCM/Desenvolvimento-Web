@@ -2,57 +2,48 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>GoHelping Mapa Mundi</title>
+    <title>GoHelping - Mapa Mundial</title>
     <meta name="description" content="Mapa mundi do GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- CSS do Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  
-<style>
-    body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    #map-container {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-    }
+    <!-- Google Fonts: DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
-    #mapa {
-      height: 100%;
-      width: 100%;
-      cursor: grab;
-    }
-    
-    #mapa:active {
-      cursor: grabbing;
-    }
-  </style>
+    <!-- Arquivo CSS Externo -->
+    <link rel="stylesheet" href="../../style/MapaMundi/MapaMundi.css">
 </head>
 <body>
-    <div>
-        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
-        <h1>Mapa de GoHelping</h1>
-        <h4>Emergências verificadas · GoHelping</h4>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="../../index.html" class="back-button" title="Voltar">←</a>
+        <div class="header-titles">
+            <h1>Mapa Mundial</h1>
+            <p>Emergências verificadas · GoHelping</p>
+        </div>
+    </header>
+
+    <div id="meu-mapa" style="height: 100% ; border-radius: 8px; border: 1px solid #161616; ;"></div>
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+
+    <!-- LEGENDA DO MAPA -->
+    <div class="map-legend">
+        <div class="legend-item"><span class="legend-dot dot-conflito"></span> Conflito</div>
+        <div class="legend-item"><span class="legend-dot dot-humanitaria"></span> Humanitária</div>
+        <div class="legend-item"><span class="legend-dot dot-inundacao"></span> Inundação</div>
+        <div class="legend-item"><span class="legend-dot dot-secafome"></span> Seca/Fome</div>
+        <div class="legend-item"><span class="legend-dot dot-terremoto"></span> Terremoto</div>
     </div>
 
-<div>
-  <div id="map-container">
-    <div id="mapa"></div>
-
-  <!-- Script do Leaflet -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
-  <script>
-    // 1. Inicializa o mapa
-    const mapa = L.map('mapa').setView([17.0, 19.0], 3  );
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap',
-      maxZoom: 19
-    }).addTo(mapa);
-  </script>
-</div>
+    <!-- Script do Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../../script/MapaMundi/MapaMundi.js"></script>
 
 </body>
 </html>
