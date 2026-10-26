@@ -1,0 +1,130 @@
+* { 
+  box-sizing: border-box; 
+}
+
+:root {
+  --cor-primaria: #c98a1b;        
+  --cor-primaria-clara: #fff6e0;  
+  --cor-texto-aviso: #8a5a00;
+  --cor-azul: #1a4fc4;            
+  --cor-escuro: #1b2540;          
+  --cor-cinza: #6b7686;           
+  --cor-fundo: #f3f6fb;          
+  --cor-borda: #dfe5ee;           
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', system-ui, Helvetica, Arial, sans-serif;
+  color: var(--cor-escuro);
+  background: var(--cor-fundo);
+  line-height: 1.5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* --- CABEÇALHO --- */
+header {
+  background: var(--cor-primaria);
+  color: #fff;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza o título, já que não temos o botão de voltar aqui */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* --- BARRA DE PROGRESSO --- */
+.progresso {
+  width: min(100% - 32px, 480px);
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+.progresso p {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.barra {
+  height: 6px;
+  border-radius: 4px;
+  background: var(--cor-borda);
+  width: 100%;
+}
+
+.barra-preenchida {
+  width: 100%; /* Passo final, 100% preenchido */                  
+  height: 100%;
+  border-radius: 4px;
+  background: var(--cor-primaria);
+}
+
+/* --- MENSAGEM CENTRAL (SUCESSO) --- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente o texto na tela */
+  padding: 32px 16px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cor-escuro);
+}
+
+h3 {
+  width: min(100%, 360px);
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--cor-cinza);
+}
+
+/* --- AÇÕES (BOTÃO FINAL) --- */
+.acoes {
+  width: min(100% - 32px, 480px);
+  margin: auto auto 0;          
+  padding-top: 32px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}
+
+.boton-azul {
+  display: block;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--cor-azul); /* Botão azul conforme a sua referência */
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.boton-azul:hover { 
+  filter: brightness(0.95); 
+}
+
+.boton-azul:focus {
+  outline: 3px solid rgba(26, 79, 196, 0.35);
+  outline-offset: 2px;
+}

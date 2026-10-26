@@ -5,30 +5,37 @@
     <title>Verificar Conta - Passo 3 | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_3.css">
 </head>
 <body>
     <div>
-        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
+        <a href="CP_2.html" class="voltar" aria-label="Voltar">&#8592;</a>
         <h1>Verificar Conta</h1>
-        <h4>Identidade verificada gera mais confiança</h4>
     </div>
+
+    <section class="progresso" aria-label="Progresso do cadastro">
+        <p>Passo 3 de 3</p>
+        <div class="barra"><div class="barra-preenchida"></div></div>
+    </section>
 
     <form action="pages/Cadastros/Pessoa/CP_4.HTML" method="GET">
         <div>
             <fieldset>
-                <form>
                 <legend>SELFIE DE CONFIRMAÇÃO</legend>
                 
                 <label for="foto">Tire uma selfie:</label>
                 <input type="file" id="foto" name="foto" accept="image/*" capture="user" required>
-                </form>
             </fieldset>
         </div>
-        <div>
-            <a href="CP_4.HTML" class="boton">Continuar</a>
-        </div>
-        <div>
-            <a href="CP_2.HTML" class="boton">Voltar</a>
+        
+        <div class="acoes">
+            <div class="botao-voltar">
+                <a href="CP_2.html" class="boton-secundario">Voltar</a>
+            </div>
+            <div class="botao-continuar">
+                <a href="CP_4.html" class="boton">Continuar</a>
+            </div>
         </div>
     </form>
 </body>

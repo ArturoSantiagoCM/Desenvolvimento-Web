@@ -1,0 +1,214 @@
+* { 
+  box-sizing: border-box; 
+}
+
+:root {
+  --cor-primaria: #c98a1b;
+  --cor-primaria-clara: #fff6e0;
+  --cor-azul: #1a4fc4;
+  --cor-escuro: #1b2540;
+  --cor-cinza: #6b7686;
+  --cor-fundo: #f3f6fb;
+  --cor-borda: #dfe5ee;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', system-ui, Helvetica, Arial, sans-serif;
+  color: var(--cor-escuro);
+  background: var(--cor-fundo);
+  line-height: 1.5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* --- HEADER --- */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: var(--cor-primaria);
+  color: #fff;
+}
+
+.voltar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* --- PROGRESSO --- */
+.progresso {
+  width: min(100% - 32px, 480px);
+  margin: 16px auto 0;
+}
+
+.progresso__texto {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.progresso__trilho {
+  height: 6px;
+  border-radius: 4px;
+  background: var(--cor-borda);
+}
+
+.progresso__preenchido {
+  height: 100%;
+  width: 66%; /* Etapa 2 */
+  border-radius: 4px;
+  background: var(--cor-primaria);
+}
+
+/* --- FORMULÁRIO PRINCIPAL --- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(100% - 32px, 480px);
+  margin: 16px auto 0;
+}
+
+form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legenda {
+  margin-bottom: 16px;
+}
+
+legend {
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.topico {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.resposta {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+  color: var(--cor-escuro);
+}
+
+.resposta:hover {
+  border-color: #c5cddb;
+}
+
+.resposta:focus {
+  outline: 3px solid rgba(201, 138, 27, 0.25);
+  border-color: var(--cor-primaria);
+}
+
+/* Estilo especial para o campo de arquivo (File Upload) */
+input[type="file"].resposta {
+  padding: 32px 16px;
+  border: 2px dashed var(--cor-primaria);
+  text-align: center;
+  color: var(--cor-cinza);
+  cursor: pointer;
+}
+
+input[type="file"].resposta:hover {
+  background: var(--cor-primaria-clara);
+}
+
+/* --- AÇÕES (BOTÕES) --- */
+.acoes {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 32px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  position: sticky;
+  bottom: 0;
+  background: var(--cor-fundo);
+}
+
+.continuar {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--cor-primaria);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.continuar:hover {
+  filter: brightness(0.95);
+}
+
+.continuar:focus {
+  outline: 3px solid rgba(201, 138, 27, 0.35);
+  outline-offset: 2px;
+}
+
+.botao-voltar {
+  flex: 1;
+  padding: 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--cor-azul);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

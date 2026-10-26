@@ -5,44 +5,53 @@
     <title>Verificar Cuenta - Paso 2 | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_2.css">
+    <script src="../../../script/Cadastros/Pessoa/CP_1.js" defer></script>
 </head>
 <body>
-    <div>
-        <a href="/src/ frontend/index.html" class="voltar">Icone de voltar no css</a>
-        <h1>Verificar Conta</h1>
-        <h4>Identidade verificada gera mais confiança</h4>
-    </div>
-    
-    <form action="pages/Cadastros/Pessoa/CP_2.HTML" method="GET">
-        <div>
+    <header class="topo">
+        <a href="CP_1.html" class="voltar" aria-label="Voltar">&#8592;</a>
+        <h1 class="titulo">Verificar Conta</h1>
+    </header>
+    <section class="progresso" aria-label="Progresso do cadastro">
+        <p class="progresso__texto">Etapa 2 de 3</p>
+        <div class="progresso__trilho"><div class="progresso__preenchido"></div></div>
+    </section>
+
+    <main>
+        <form action="CP_3.html" method="GET">
             <fieldset>
-                <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
-            <form>
-                 <label for="email">Email:</label><br>
-                 <input type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required><br><br>
-                 <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
-                <label for="Tdocumento">Tipo de documento</label>
-                <select id="Tdocumento" name="Tdocumento">
-                    <option value="">Selecione...</option>
-                    <option value="CPF">CPF</option>
-                    <option value="RG">RG</option>
-                    <option value="PASSAPORTE">PASSAPORTE</option>
-                </select>        
-                
-                <label for="CPF">Número do documento:</label>
-                <input type="number" id="CPF" name="CPF" pattern="\d{11}" placeholder="ex:000.000.000-00" required>
-                
-                <label for="Fcpf">Enviar foto do documento:</label>
-                <input type="file" id="Fcpf" name="Fcpf" required><br>
-            </form>
+                <div class="legenda">
+                    <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
+                </div>
+                <div class="campo">
+                    <label class="topico" for="email">Email:</label>
+                    <input class="resposta" type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required>
+                    <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+                </div>
+                <div class="campo">
+                    <label class="topico" for="Tdocumento">Tipo de documento:</label>
+                    <select class="resposta" id="Tdocumento" name="Tdocumento" required>
+                        <option value="">Selecione...</option>
+                        <option value="CPF">CPF</option>
+                        <option value="RG">RG</option>
+                        <option value="PASSAPORTE">Passaporte</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label class="topico" for="CPF">Número do documento:</label>
+                    <input class="resposta" type="text" id="CPF" name="CPF" placeholder="ex: 000.000.000-00" required>
+                </div>
+                <div class="campo">
+                    <label class="topico" for="Fcpf">Enviar foto do documento:</label>
+                    <input class="resposta" type="file" id="Fcpf" name="Fcpf" required>
+                </div>
             </fieldset>
-        </div>
-        <div>
-            <a href="CP_3.HTML" class="boton">Continuar</a>
-        </div>
-        <div>
-            <a href="CP_1.HTML" class="boton">Voltar</a>
-        </div>
-    </form>
+            <div class="acoes">
+                <a href="CP_1.html" class="botao-voltar">Voltar</a>
+                <button type="submit" class="continuar">Continuar</button>
+            </div>
+        </form>
+    </main>
 </body>
 </html>

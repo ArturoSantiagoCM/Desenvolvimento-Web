@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+}
+
 :root {
   --cor-primaria: #c98a1b;        
   --cor-primaria-clara: #fff6e0;  
@@ -9,7 +12,6 @@
   --cor-fundo: #f3f6fb;          
   --cor-borda: #dfe5ee;           
 }
-
 
 html, body {
   margin: 0;
@@ -27,107 +29,78 @@ body {
   min-height: 100dvh;
 }
 
-
-.cabecalho {
+/* Estilização do cabeçalho (primeira div do body) */
+body > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: var(--cor-primaria);
   color: #fff;
   padding: 20px 16px;
 }
-.cabecalho li {
-  list-style: none;
-  display: flex;              
-  margin-bottom: 10px;
-}
-.cabecalho a {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-.cabecalho h1 {
+
+body > div:first-of-type h1 {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
 }
-.cabecalho h4 {
-  margin: 0;
-  font-size: 0.85rem;
-  font-weight: 400;
-  opacity: 0.9;
+
+body > div:first-of-type h4 {
+  display: none; /* Ocultado para que fique em uma linha única igual ao CP_2 */
 }
 
-
-.progresso {
-  width: min(100% - 32px, 480px);
-  margin: 16px auto 0;
-}
-.progresso p {
-  margin: 0 0 6px;
-  font-size: 0.8rem;
+.voltar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--cor-primaria);
-}
-.barra {
-  height: 6px;
-  border-radius: 4px;
-  background: var(--cor-borda);
-}
-.barra-preenchida {
-  width: 33%;                  
-  height: 6px;
-  border-radius: 4px;
-  background: var(--cor-primaria);
+  text-decoration: none;
 }
 
-
+/* Estrutura principal do formulário */
 form {
   flex: 1;                    
   display: flex;
   flex-direction: column;
   width: min(100% - 32px, 480px);
-  margin: 16px auto 0;
+  margin: 24px auto 0;
 }
 
-.acoes {
-  margin-top: auto;          
-  padding-top: 32px;
-  padding-bottom: calc(16px + env(safe-area-inset-bottom));
-  position: sticky;           
-  bottom: 0;
-  background: var(--cor-fundo);
+/* Oculta o form interno caso você não o remova do HTML */
+form form {
+  display: contents;
 }
-
-
-.aviso {
-  margin: 0 0 20px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  background: var(--cor-primaria-clara);
-  color: var(--cor-texto-aviso);
-  font-size: 0.85rem;
-}
-
 
 fieldset {
   border: none;
   padding: 0;
   margin: 0;
 }
+
 legend {
   padding: 0;
   margin-bottom: 6px;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--cor-primaria);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
 label {
   display: block;
   margin: 14px 0 6px;
   font-size: 0.9rem;
   font-weight: 700;
 }
+
 input, select {
   width: 100%;
   padding: 14px 16px;
@@ -137,12 +110,25 @@ input, select {
   font: inherit;
   color: var(--cor-escuro);
 }
-input:hover, select:hover { border-color: #c5cddb; }
+
+input:hover, select:hover { 
+  border-color: #c5cddb; 
+}
+
 input:focus, select:focus {
   outline: 3px solid rgba(201, 138, 27, 0.25);
   border-color: var(--cor-primaria);
 }
 
+/* Container do botão de continuar (última div dentro do form principal) */
+body > form > div:last-of-type {
+  margin-top: auto;          
+  padding-top: 32px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  position: sticky;           
+  bottom: 0;
+  background: var(--cor-fundo);
+}
 
 .boton {
   display: block;
@@ -155,8 +141,40 @@ input:focus, select:focus {
   text-decoration: none;
   cursor: pointer;
 }
-.boton:hover { filter: brightness(0.95); }
+
+.boton:hover { 
+  filter: brightness(0.95); 
+}
+
 .boton:focus {
   outline: 3px solid rgba(201, 138, 27, 0.35);
   outline-offset: 2px;
+}
+
+/* --- BARRA DE PROGRESSO --- */
+.progresso {
+  width: min(100% - 32px, 480px);
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+.progresso p {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+.barra {
+  height: 6px;
+  border-radius: 4px;
+  background: var(--cor-borda);
+  width: 100%;
+}
+
+.barra-preenchida {
+  width: 33.3%;                  
+  height: 100%;
+  border-radius: 4px;
+  background: var(--cor-primaria);
 }
