@@ -1,21 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Verificar Cuenta - Paso 2 | GoHelping</title>
+    <title>Verificar Conta - Passo 2 | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_2.css">
-    <script src="../../../script/Cadastros/Pessoa/CP_1.js" defer></script>
+    <script src="../../../script/Cadastros/Pessoa/CP_2.js" defer></script>
 </head>
 <body>
     <header class="topo">
         <a href="CP_1.html" class="voltar" aria-label="Voltar">&#8592;</a>
         <h1 class="titulo">Verificar Conta</h1>
     </header>
+
     <section class="progresso" aria-label="Progresso do cadastro">
         <p class="progresso__texto">Etapa 2 de 3</p>
-        <div class="progresso__trilho"><div class="progresso__preenchido"></div></div>
+        <div class="progresso__trilho">
+            <div class="progresso__preenchido"></div>
+        </div>
     </section>
 
     <main>
@@ -24,11 +28,22 @@
                 <div class="legenda">
                     <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
                 </div>
+
                 <div class="campo">
                     <label class="topico" for="email">Email:</label>
-                    <input class="resposta" type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required>
+                    <input
+                        class="resposta"
+                        type="email"
+                        id="email"
+                        name="email"
+                        maxlength="150"
+                        aria-describedby="erro-email"
+                        aria-invalid="false"
+                        required
+                    >
                     <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
                 </div>
+
                 <div class="campo">
                     <label class="topico" for="Tdocumento">Tipo de documento:</label>
                     <select class="resposta" id="Tdocumento" name="Tdocumento" required>
@@ -38,15 +53,32 @@
                         <option value="PASSAPORTE">Passaporte</option>
                     </select>
                 </div>
+
                 <div class="campo">
                     <label class="topico" for="CPF">Número do documento:</label>
-                    <input class="resposta" type="text" id="CPF" name="CPF" placeholder="ex: 000.000.000-00" required>
+                    <input
+                        class="resposta"
+                        type="text"
+                        id="CPF"
+                        name="CPF"
+                        placeholder="ex: 000.000.000-00"
+                        required
+                    >
                 </div>
+
                 <div class="campo">
                     <label class="topico" for="Fcpf">Enviar foto do documento:</label>
-                    <input class="resposta" type="file" id="Fcpf" name="Fcpf" required>
+                    <input
+                        class="resposta"
+                        type="file"
+                        id="Fcpf"
+                        name="Fcpf"
+                        accept="image/*,.pdf"
+                        required
+                    >
                 </div>
             </fieldset>
+
             <div class="acoes">
                 <a href="CP_1.html" class="botao-voltar">Voltar</a>
                 <button type="submit" class="continuar">Continuar</button>

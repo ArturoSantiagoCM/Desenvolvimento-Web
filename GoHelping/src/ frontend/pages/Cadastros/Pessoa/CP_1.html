@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,29 +11,49 @@
 </head>
 <body>
     <div>
-        <a href="/src/frontend/index.html" class="voltar" aria-label="Voltar">&#8592;</a>
+        <a href="../../../index.html" class="voltar" aria-label="Voltar">&#8592;</a>
         <h1>Verificar Conta</h1>
     </div>
-    
+
     <section class="progresso" aria-label="Progresso do cadastro">
         <p>Passo 1 de 3</p>
-        <div class="barra"><div class="barra-preenchida"></div></div>
+        <div class="barra">
+            <div class="barra-preenchida"></div>
+        </div>
     </section>
-    
-    <form >
+
+    <form>
         <div>
             <fieldset>
                 <legend>Identidade Pessoal</legend>
-                
+
                 <label for="nome">Nome completo (como no documento):</label>
-                <input type="text" id="nome" name="nome" placeholder="Gustavo Alencar" maxlength="100" aria-describedby="nameCounter erro-nome" aria-invalid="false" required>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Gustavo Alencar"
+                    maxlength="100"
+                    aria-describedby="nameCounter erro-nome"
+                    aria-invalid="false"
+                    required
+                >
+
                 <span id="erro-nome" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
                 <span id="nameCounter"></span>
-                
+
                 <label for="datan">Data de Nascimento:</label>
-                <input type="date" id="datan" name="datan" aria-describedby="dateError" aria-invalid="false" required>
+                <input
+                    type="date"
+                    id="datan"
+                    name="datan"
+                    aria-describedby="dateError"
+                    aria-invalid="false"
+                    required
+                >
+
                 <span id="dateError" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
-                
+
                 <label for="paises">País de residência:</label>
                 <select id="paises" name="pais" required>
                     <option value="">Selecione...</option>
@@ -44,9 +65,11 @@
                 </select>
             </fieldset>
         </div>
+
         <div>
-            <!-- Pode usar a tag <a> como estava, ou <button> para submeter o formulário corretamente -->
-            <a href="../../Cadastros/Pessoa/CP_2.html" class="boton">Continuar</a>
+            <a href="CP_2.html" class="boton" id="continuarCP1">
+                Continuar
+            </a>
         </div>
     </form>
 </body>
