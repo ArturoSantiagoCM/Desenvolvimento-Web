@@ -204,3 +204,73 @@ main section:nth-of-type(3) p:nth-of-type(3) a {
   outline: 3px solid rgba(26, 79, 196, 0.25);
   outline-offset: 2px;
 }
+
+/* ---------- INTERAÇÃO COM AS DOAÇÕES ---------- */
+/* Complemento ao CSS original: não altera o restante da página. */
+#controlesDoacoes {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+#botaoDoacoes {
+  padding: 12px 18px;
+  border: 1px solid #4b9d36;
+  border-radius: 10px;
+  background: #98ec78;
+  color: #183e16;
+  font: 600 0.94rem inherit;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  transition: background-color .2s, transform .2s, box-shadow .2s;
+}
+#botaoDoacoes:hover {
+  background: #7edb5e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+#botaoDoacoes:active { transform: translateY(0); }
+#botaoDoacoes:focus-visible {
+  outline: 3px solid #285c20;
+  outline-offset: 3px;
+}
+
+#pesquisaDoacoes {
+  flex: 1 1 190px;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #1e293b;
+  font: inherit;
+  font-size: .94rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+#pesquisaDoacoes:focus {
+  outline: none;
+  border-color: #65b84a;
+  box-shadow: 0 0 0 3px rgba(101, 184, 74, .15);
+}
+#pesquisaDoacoes::placeholder { color: #778397; }
+#mensagemPesquisa {
+  color: #64748b;
+  font-size: .9rem;
+  margin: 0 0 10px;
+}
+#mensagemPesquisa:empty { display: none; }
+
+/* Garante que elementos escondidos pelo JS não apareçam por estilos anteriores. */
+#listaDoacoes [hidden] { display: none !important; }
+#listaDoacoes > li[hidden] { display: none !important; }
+
+/* A mensagem de contato informa claramente que falta um dado real. */
+.contato-pendente { color: #6b7686; font-size: .9rem; }
+@media (max-width: 420px) {
+  #controlesDoacoes { flex-direction: column; }
+  #botaoDoacoes, #pesquisaDoacoes { width: 100%; flex-basis: auto; }
+}

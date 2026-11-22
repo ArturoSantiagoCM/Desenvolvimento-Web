@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../script/TiposdeCentros/CentroMedico.js"></script>
   <link rel="stylesheet" href="../../style/TiposdeCentros/CentroMedico.css">
   <title>GoHelping - Detalhes do Local</title>
 </head>
@@ -30,7 +32,12 @@
 
     <section>
       <h2>O QUE DOAR?</h2>
-      <ol>
+      <div id="controlesDoacoes">
+        <button type="button" id="botaoDoacoes" aria-controls="listaDoacoes" aria-expanded="true">Esconder doações</button>
+        <input type="search" id="pesquisaDoacoes" placeholder="Pesquisar doações..." aria-label="Pesquisar itens de doação">
+      </div>
+      <p id="mensagemPesquisa" aria-live="polite"></p>
+      <ol id="listaDoacoes">
         <li>
           <strong>Sangue</strong>
           <ul>
@@ -69,11 +76,13 @@
 
     <section>
       <h2>Contato e Responsável</h2>
-      <p><strong>Telefone / WhatsApp:</strong> <a href="tel:+5511999999999"></a></p>
+      <!-- Ao obter contato verdadeiro, substitua o aviso por <a href="tel:+NUMERO">NUMERO</a> -->
+      <p><strong>Telefone / WhatsApp:</strong> <span class="contato-pendente">Não informado</span></p>
+      <!-- Para oferecer e-mail, substitua por <a href="mailto:EMAIL">EMAIL</a> -->
+      <p><strong>E-mail:</strong> <span class="contato-pendente">Não informado</span></p>
       <p><strong>Responsável:</strong> Centro Médico de Caracas</p>
       <p><strong>Site:</strong> <a href="#" target="_blank">Acessar site oficial</a></p>
     </section>
   </main>
-
 </body>
 </html>
