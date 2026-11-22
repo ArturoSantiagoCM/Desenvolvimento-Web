@@ -266,3 +266,45 @@ main > section:nth-of-type(3) p:last-of-type a {
     animation: none !important;
   }
 }
+
+/* Botão de mostrar e esconder doações */
+
+#botaoDoacoes {
+    background-color: #98ec78;
+    color: #183e16;
+
+    border: 1px solid #4b9d36;
+    border-radius: 10px;
+
+    padding: 12px 22px;
+
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+}
+
+/* Quando o mouse passa pelo botão */
+#botaoDoacoes:hover {
+    background-color: #7edb5e;
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Quando o usuário clica */
+#botaoDoacoes:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Acessibilidade para navegação por teclado */
+#botaoDoacoes:focus-visible {
+    outline: 3px solid #285c20;
+    outline-offset: 3px;
+}
