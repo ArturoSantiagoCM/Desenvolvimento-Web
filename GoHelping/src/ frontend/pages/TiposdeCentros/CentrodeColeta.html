@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>GoHelping - Detalhes do Local</title>
   <link rel="stylesheet" href="../../style/TiposdeCentros/CentrodeColeta.css">
+  <script src="../../script/TiposdeCentros/CentrodeColeta.js"></script>
 </head>
 <body>
 
@@ -19,18 +21,32 @@
       <h2>Endereço</h2>
       <p>Estado Miranda — Venezuela</p>
       <p>Las Mercedes, Caracas, Iglesia Nuestra Señora de Las Mercedes</p>
-      <a href="https://www.google.com/maps/place/Our+Lady+of+Las+Mercedes
-      /@10.5104063,-66.9167402,17z/data=!3m1!4b1!4m6!3m5!1s0x8c2a5ecf9e517bad
-      :0x6d41dd7de9d52d95!8m2!3d10.510401!4d-66.9141653!16s%2Fg%2F1yw0_v1zq?
-      entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D"
-       target="_blank">Ver no Google Maps</a>
+
+      <a href="https://www.google.com/maps/place/Our+Lady+of+Las+Mercedes/@10.5104063,-66.9167402,17z/"
+         target="_blank">
+        Ver no Google Maps
+      </a>
     </section>
 
     <hr>
 
     <section>
       <h2>O QUE DOAR?</h2>
-      <ol>
+
+      <button type="button" id="botaoDoacoes">
+        Esconder doações
+      </button>
+
+      <input
+        type="search"
+        id="pesquisaDoacoes"
+        placeholder="Digite o que deseja doar..."
+        aria-label="Pesquisar doações"
+      >
+
+      <p id="mensagemPesquisa" aria-live="polite"></p>
+
+      <ol id="listaDoacoes">
         <li>
           <strong>Alimentação e hidratação</strong>
           <ul>
@@ -39,6 +55,7 @@
             <li>Fórmulas lácteas,papinha pronta e leite integral</li>
           </ul>
         </li>
+
         <li>
           <strong>Higiene Pessoal e Limpeza</strong>
           <ul>
@@ -48,6 +65,7 @@
             <li>Produtos de limpeza: Sabão, detergente, desinfentante,sacos de lixo,vassoura e rodo</li>
           </ul>
         </li>
+
         <li>
           <strong>Dormitório e primeiros socorros</strong>
           <ul>
@@ -55,6 +73,7 @@
             <li>Curativos, gases, álcool 70%, analgésicos básicos</li>
           </ul>
         </li>
+
         <li>
           <strong>Vestuário</strong>
           <ul>
@@ -69,9 +88,34 @@
 
     <section>
       <h2>Contato e Responsável</h2>
-      <p><strong>Telefone / WhatsApp:</strong> <a href="tel:+5511999999999"></a></p>
-      <p><strong>Responsável:</strong> Centro de Coleta de Las Mercedes</p>
-      <p><strong>Site:</strong> <a href="#" target="_blank">Acessar site oficial</a></p>
+
+      <!-- Substituir pelos contatos reais da instituição -->
+
+      <p>
+        <strong>Telefone / WhatsApp:</strong>
+        <a href="tel:+5511999999999">
+          +55 11 99999-9999 (exemplo)
+        </a>
+      </p>
+
+      <p>
+        <strong>E-mail:</strong>
+        <a href="mailto:contato@exemplo.com">
+          contato@exemplo.com (exemplo)
+        </a>
+      </p>
+
+      <p>
+        <strong>Responsável:</strong>
+        Centro de Coleta de Las Mercedes
+      </p>
+
+      <p>
+        <strong>Site:</strong>
+        <a href="#" target="_blank">
+          Acessar site oficial
+        </a>
+      </p>
     </section>
   </main>
 
