@@ -66,6 +66,38 @@ hr {
   display: none;
 }
 
+/* ===== Aviso da conta (ID) ===== */
+.aviso-conta {
+  margin: 0 0 var(--espaco);
+  padding: 12px 14px;
+  border: 1px solid #f1d58a;
+  border-radius: 12px;
+  background: #fff6e0;
+  color: #8a5a00;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.aviso-conta:empty {
+  display: none;
+}
+
+.aviso-conta--ok {
+  border-color: #b9ccf3;
+  background: #eef3fd;
+  color: var(--cor-primaria);
+}
+
+.aviso-conta a {
+  color: inherit;
+  font-weight: 700;
+}
+
+.aviso-conta strong {
+  letter-spacing: 0.05em;
+  overflow-wrap: anywhere;
+}
+
 /* ===== Conteúdo ===== */
 main {
   flex: 1;
@@ -335,4 +367,62 @@ button[type="submit"] {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* Pin fixo no centro do mapa (estilo Uber) */
+.pin-central {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    z-index: 1000;
+    pointer-events: none; /* deixa o arraste passar por baixo do pin */
+}
+
+.pin-corpo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -100%); /* a ponta do pin fica no centro exato */
+    transition: transform 0.15s ease;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+}
+
+.pin-sombra {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 5px;
+    margin: -2.5px 0 0 -6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+/* enquanto arrasta, o pin "levanta" */
+.pin-central.levantado .pin-corpo {
+    transform: translate(-50%, calc(-100% - 14px));
+}
+
+.pin-central.levantado .pin-sombra {
+    transform: scale(0.6);
+    opacity: 0.5;
+}
+
+.dica-mapa {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 85%;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    text-align: center;
+    pointer-events: none;
 }

@@ -2,9 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>GoHelping - Registrar Local</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../../../script/Comum/Armazenamento.js"></script>
   <script src="../../../script/Cadastros/LocaldeAjuda/RegistroLocal.js" defer></script>
   <link rel="stylesheet" href="../../../style/Cadastros/LocaldeAjuda/RegistroLocal.css">
 </head>
@@ -13,11 +16,14 @@
     <a href="../../../index.html">← Voltar para a tela Inicial</a>
     <h1>Registrar Local de Ajuda</h1>
 
+    <!-- preenchido pelo RegistroLocal.js: mostra a conta (ID) ligada a este registro -->
+    <p id="aviso-conta" class="aviso-conta" role="status"></p>
+
 
   <hr>
 
   <main>
-    <form action="#" method="post">
+    <form action="#" method="post" novalidate>
       
       <!-- CONTATO -->
       <fieldset>
@@ -29,18 +35,18 @@
         <span id="nameCounter"></span>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" maxlength="150" aria-describedby="erro-email" aria-invalid="false" required><br><br>
+        <input type="email" id="email" name="email" maxlength="150" autocomplete="email" aria-describedby="erro-email" aria-invalid="false" required><br><br>
         <span id="erro-email" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
         <label for="telefone">Telefone/WhatsApp:</label><br>
-        <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(xx) xxxxx-xxxx" aria-describedby="erro-telefone" aria-invalid="false" required><br><br>
+        <input type="tel" id="telefone" name="telefone" maxlength="20" placeholder="(xx) xxxxx-xxxx" inputmode="tel" autocomplete="tel" aria-describedby="erro-telefone" aria-invalid="false" required><br><br>
         <span id="erro-telefone" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
         <label for="ong">Organização / ONG (opcional):</label><br>
-        <input type="text" id="ong" name="ong" maxlength="50" aria-describedby="ongCounter erro-nome" aria-invalid="false"><br>
+        <input type="text" id="ong" name="ong" maxlength="50" aria-describedby="ongCounter erro-ong" aria-invalid="false"><br>
         <span id="erro-ong" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
         <span id="ongCounter"></span>
 
         <label for="site">Site/Red Social(opcional):</label><br>
-        <input type="text" id="site" name="site" maxlength="100"><br><br>
+        <input type="text" id="site" name="site" maxlength="100" inputmode="url" autocomplete="url"><br><br>
        
       
 

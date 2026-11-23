@@ -49,7 +49,6 @@ header h1 {
 .progresso {
   width: min(100% - 32px, 480px);
   margin: 16px auto 0;
-  padding: 0 16px;
 }
 
 .progresso p {
@@ -127,4 +126,108 @@ h3 {
 .boton-azul:focus {
   outline: 3px solid rgba(26, 79, 196, 0.35);
   outline-offset: 2px;
+}
+
+/* --- ID DO USUÁRIO --- */
+.id-usuario {
+  width: min(100%, 360px);
+  margin: 24px auto 0;
+  padding: 14px 16px;
+  border: 1px dashed var(--cor-primaria);
+  border-radius: 12px;
+  background: var(--cor-primaria-clara);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--cor-texto-aviso);
+}
+
+.id-usuario[hidden],
+.boton-azul[hidden] {
+  display: none;
+}
+
+.id-usuario strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.acoes .boton-azul + .boton-azul {
+  margin-top: 12px;
+}
+
+.boton-contorno {
+  background: #fff;
+  color: var(--cor-azul);
+  border: 1px solid var(--cor-borda);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE (celular, tablet e PC)
+   ========================================= */
+
+/* topo respeita o notch / barra do sistema e acompanha a largura do conteúdo */
+header {
+  padding-top: calc(20px + env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px), calc((100% - var(--largura-conteudo, 480px)) / 2));
+  padding-right: max(16px, env(safe-area-inset-right, 0px), calc((100% - var(--largura-conteudo, 480px)) / 2));
+}
+
+input, select, button {
+  max-width: 100%;
+  font-size: 1rem; /* 16px: evita zoom automático no iPhone */
+}
+
+/* tablet e PC: coluna um pouco mais larga e mais espaço */
+@media (min-width: 768px) {
+  :root {
+    --largura-conteudo: 560px;
+  }
+
+  .progresso, .acoes {
+    width: min(100% - 48px, var(--largura-conteudo));
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* PC grande */
+@media (min-width: 1200px) {
+  .progresso, .acoes {
+    margin-top: 32px;
+  }
+}
+
+/* celular deitado (pouca altura): os botões não ficam presos no rodapé */
+@media (max-height: 500px) and (orientation: landscape) {
+  .acoes {
+    position: static;
+    padding-top: 16px;
+  }
+}
+
+/* telas muito estreitas: botões lado a lado passam a ficar um embaixo do outro */
+@media (max-width: 340px) {
+  .acoes {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (hover: none) {
+  .boton:hover, .boton-secundario:hover, .boton-azul:hover {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

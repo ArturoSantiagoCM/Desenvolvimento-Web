@@ -203,3 +203,158 @@ header {
         font-size: 0.9rem;
     }
 }
+
+/* =========================================
+   CORREÇÃO DE LAYOUT + RESPONSIVIDADE
+   (o mapa usa o espaço que sobra entre o topo e a legenda,
+    assim a legenda nunca some para fora da tela)
+   ========================================= */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+    height: 100dvh; /* descontando a barra do navegador no celular */
+}
+
+header {
+    flex-shrink: 0;
+    padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+
+#meu-mapa {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto !important; /* sobrepõe o height: 100% escrito direto no HTML */
+    width: 100%;
+    border: 0 !important;
+    border-radius: 0 !important;
+    z-index: 1;
+}
+
+.map-legend {
+    order: 3;
+    flex-shrink: 0;
+    border-bottom: 0;
+    border-top: 1px solid var(--gray-border);
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+
+/* celulares estreitos: legenda mais compacta */
+@media (max-width: 360px) {
+    .map-legend {
+        gap: 0.5rem 0.9rem;
+        font-size: 0.7rem;
+    }
+
+    .header-titles p {
+        display: none;
+    }
+}
+
+/* celular deitado: cabeçalho e legenda ocupam menos altura */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+        padding-bottom: 0.5rem;
+    }
+
+    .header-titles p {
+        display: none;
+    }
+
+    .map-legend {
+        padding-top: 0.4rem;
+        padding-bottom: calc(0.4rem + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media (min-width: 1024px) {
+    header {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .map-legend {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+/* =========================================
+   ÍCONES DOS LOCAIS DE AJUDA NO MAPA
+   ========================================= */
+.legend-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--cor);
+}
+
+.legend-star { font-size: 1rem; line-height: 1; }
+.legend-star--cinza { color: #94a3b8; }
+.legend-star--roxa { color: #6d28d9; }
+
+/* o Leaflet põe um fundo/borda padrão em divIcon: aqui ele é limpo */
+.leaflet-div-icon.marcador-local {
+    background: transparent;
+    border: 0;
+}
+
+.marcador-local__icone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    line-height: 1;
+    background: var(--white);
+    border: 3px solid var(--cor);
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.35);
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+.marcador-local:hover .marcador-local__icone,
+.marcador-local:focus-visible .marcador-local__icone {
+    transform: scale(1.18);
+}
+
+.marcador-local:focus-visible { outline: none; }
+
+/* estrelinha no canto: cinza = não verificado, roxa = verificado */
+.marcador-local__estrela {
+    position: absolute;
+    right: -7px;
+    top: -9px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border-radius: 50%;
+    background: var(--white);
+    color: #94a3b8;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+}
+.marcador-local--verificado .marcador-local__estrela { color: #6d28d9; }
+
+.marcador-local__nome {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+}

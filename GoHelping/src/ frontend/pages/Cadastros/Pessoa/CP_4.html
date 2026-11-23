@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Verificar Conta - Concluído | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_4.css">
+    <script src="../../../script/Comum/Armazenamento.js"></script>
     <script src="../../../script/Cadastros/Pessoa/CP_4.js" defer></script>
 </head>
 <body>
@@ -30,10 +30,18 @@
         <h3>
             Confira o resultado do preenchimento das etapas.
         </h3>
+
+        <p id="id-usuario" class="id-usuario" hidden>
+            Seu ID de usuário:
+            <strong id="id-usuario-valor"></strong>
+        </p>
     </main>
 
     <div class="acoes">
-        <a href="../../../index.html" class="boton-azul">
+        <a href="../../Perfil/PerfilUsuario.html" class="boton-azul" id="ver-perfil" hidden>
+            Ver meu perfil
+        </a>
+        <a href="../../../index.html" class="boton-azul boton-contorno">
             Voltar ao início
         </a>
     </div>

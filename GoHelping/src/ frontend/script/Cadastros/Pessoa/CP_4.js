@@ -1,26 +1,29 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // Encontrar os textos do HTML
     const titulo = document.querySelector("main h2");
     const descricao = document.querySelector("main h3");
+    const blocoId = document.getElementById("id-usuario");
+    const valorId = document.getElementById("id-usuario-valor");
+    const botaoPerfil = document.getElementById("ver-perfil");
 
     if (!titulo || !descricao) return;
 
-    // Verificar se a etapa 3 foi concluída
-    const concluido = sessionStorage.getItem(
-        "gohelping_cp3_concluido"
-    ) === "sim";
+    // A conta criada no passo 3 fica salva no localStorage e já está "logada"
+    const usuario = GH.usuarioAtual();
 
-    if (concluido) {
+    if (usuario) {
 
-        titulo.textContent = "Etapas preenchidas!";
+        titulo.textContent = "Conta criada!";
 
         descricao.textContent =
-            "Sua selfie foi validada neste navegador. " +
-            "Para enviar os dados e solicitar verificação " +
-            "da conta, ainda é necessário conectar " +
-            "o cadastro a um servidor.";
+            "Seus dados foram salvos neste navegador e a conta está " +
+            "aguardando verificação. Guarde o seu ID: ele aparece " +
+            "nos locais de ajuda que você registrar.";
+
+        valorId.textContent = usuario.id;
+        blocoId.hidden = false;
+        botaoPerfil.hidden = false;
 
     } else {
 
@@ -28,8 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         descricao.textContent =
             "Conclua as etapas do cadastro para chegar " +
-            "a esta tela. Nenhum documento foi enviado " +
-            "para verificação.";
+            "a esta tela. Nenhuma conta foi criada.";
 
     }
 

@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Verificar Conta - Passo 2 | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_2.css">
+    <script src="../../../script/Comum/Armazenamento.js"></script>
     <script src="../../../script/Cadastros/Pessoa/CP_2.js" defer></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
     </section>
 
     <main>
-        <form action="CP_3.html" method="GET">
+        <form id="form-cp2" action="CP_3.html" method="GET">
             <fieldset>
                 <div class="legenda">
                     <legend>DOCUMENTO DE IDENTIFICAÇÃO</legend>
@@ -62,8 +63,12 @@
                         id="CPF"
                         name="CPF"
                         placeholder="ex: 000.000.000-00"
+                        maxlength="30"
+                        aria-describedby="erro-documento"
+                        aria-invalid="false"
                         required
                     >
+                    <span id="erro-documento" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
                 </div>
 
                 <div class="campo">
@@ -74,8 +79,10 @@
                         id="Fcpf"
                         name="Fcpf"
                         accept="image/*,.pdf"
+                        aria-describedby="aviso-arquivo"
                         required
                     >
+                    <span id="aviso-arquivo" style="display: none; font-size: 0.875rem; margin-top: 4px;"></span>
                 </div>
             </fieldset>
 

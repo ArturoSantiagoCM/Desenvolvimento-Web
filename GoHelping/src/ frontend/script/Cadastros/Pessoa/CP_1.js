@@ -1,4 +1,3 @@
-
 /** NOME COMPLETO JAVASCRIPT **/
 
 // Define o máximo de caracteres e pega os elementos do HTML
@@ -118,4 +117,90 @@ InputData.addEventListener("blur", () => {
         InputError.style.display = "block";
         InputError.textContent = "Data inválida. A idade deve estar entre 16 e 120 anos.";
     }
+});
+
+
+//--------------------------------------------------------------------------------
+
+/** SALVAR OS DADOS DO PASSO 1 (localStorage) E IR PARA O PASSO 2 **/
+
+const FormCP1 = document.getElementById("form-cp1");
+const SelectPais = document.getElementById("paises");
+const ErroPaisSpan = document.getElementById("erro-pais");
+
+// Se a pessoa voltou do passo 2, preenche o que já tinha digitado
+(function preencherRascunho() {
+    const rascunho = GH.lerRascunho();
+    if (rascunho.pessoa?.nome) NomeCompleto.value = rascunho.pessoa.nome;
+    if (rascunho.pessoa?.nascimento) InputData.value = rascunho.pessoa.nascimento;
+    if (rascunho.pessoa?.paisCodigo) SelectPais.value = rascunho.pessoa.paisCodigo;
+})();
+
+function mostrarErro(campo, span, texto) {
+    campo.setAttribute("aria-invalid", "true");
+    span.style.display = "block";
+    span.textContent = texto;
+}
+
+function limparErro(campo, span) {
+    campo.setAttribute("aria-invalid", "false");
+    span.style.display = "none";
+    span.textContent = "";
+}
+
+// Valida os três campos; devolve o primeiro campo com problema (ou null)
+function validarPasso1() {
+    let primeiroErro = null;
+    const marcar = (campo) => { primeiroErro = primeiroErro ?? campo; };
+
+    NomeCompleto.value = NomeCompleto.value.trim().replace(/\s+/g, " ");
+    if (NomeCompleto.value.length < 3 || !NomeCompleto.value.includes(" ")) {
+        mostrarErro(NomeCompleto, ErroNomeSpan, "Informe o nome completo, como no documento.");
+        marcar(NomeCompleto);
+    } else {
+        limparErro(NomeCompleto, ErroNomeSpan);
+    }
+
+    const dataOk = InputData.value && InputData.value >= InputData.min && InputData.value <= InputData.max;
+    if (!dataOk) {
+        mostrarErro(InputData, InputError, "Data inválida. A idade deve estar entre 16 e 120 anos.");
+        marcar(InputData);
+    } else {
+        limparErro(InputData, InputError);
+    }
+
+    if (!SelectPais.value) {
+        mostrarErro(SelectPais, ErroPaisSpan, "Selecione o país de residência.");
+        marcar(SelectPais);
+    } else {
+        limparErro(SelectPais, ErroPaisSpan);
+    }
+
+    return primeiroErro;
+}
+
+FormCP1.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    const campoComErro = validarPasso1();
+    if (campoComErro) {
+        campoComErro.focus();
+        return;
+    }
+
+    const salvou = GH.salvarRascunho({
+        pessoa: {
+            nome: NomeCompleto.value,
+            nascimento: InputData.value, // formato AAAA-MM-DD
+            pais: SelectPais.options[SelectPais.selectedIndex].text,
+            paisCodigo: SelectPais.value
+        }
+    });
+
+    if (!salvou) {
+        alert("Não foi possível salvar no navegador. Verifique se o armazenamento local está liberado.");
+        return;
+    }
+
+    window.location.href = "CP_2.html";
 });

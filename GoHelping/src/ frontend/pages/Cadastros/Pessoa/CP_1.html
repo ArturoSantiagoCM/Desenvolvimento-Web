@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Verificar Conta - Passo 1 | GoHelping</title>
     <meta name="description" content="Crie sua conta em GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../style/Cadastros/Pessoa/CP_1.css">
+    <script src="../../../script/Comum/Armazenamento.js"></script>
     <script src="../../../script/Cadastros/Pessoa/CP_1.js" defer></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
         </div>
     </section>
 
-    <form>
+    <form id="form-cp1" novalidate>
         <div>
             <fieldset>
                 <legend>Identidade Pessoal</legend>
@@ -39,7 +40,7 @@
                     required
                 >
 
-                <span id="erro-nome" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+                <span id="erro-nome" class="msg-erro" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
                 <span id="nameCounter"></span>
 
                 <label for="datan">Data de Nascimento:</label>
@@ -52,10 +53,10 @@
                     required
                 >
 
-                <span id="dateError" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
+                <span id="dateError" class="msg-erro" style="display: none; color: #d93025; font-size: 0.875rem; margin-top: 4px;"></span>
 
                 <label for="paises">País de residência:</label>
-                <select id="paises" name="pais" required>
+                <select id="paises" name="pais" aria-describedby="erro-pais" required>
                     <option value="">Selecione...</option>
                     <option value="br">Brasil</option>
                     <option value="pt">Portugal</option>
@@ -63,13 +64,13 @@
                     <option value="us">Estados Unidos</option>
                     <option value="jp">Japão</option>
                 </select>
+                <span id="erro-pais" class="msg-erro" style="display: none;"></span>
             </fieldset>
         </div>
 
         <div>
-            <a href="CP_2.html" class="boton" id="continuarCP1">
-                Continuar
-            </a>
+            <p class="ja-tem-conta">Já tem conta? <a href="../../Perfil/PerfilUsuario.html">Entrar</a></p>
+            <button type="submit" class="boton" id="continuarCP1">Continuar</button>
         </div>
     </form>
 </body>

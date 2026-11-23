@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>GoHelping - Mapa Mundial</title>
     <meta name="description" content="Mapa mundi do GoHelping. Onde há uma necessidade, existe uma chance de ajudar.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     
     <!-- Google Fonts: DM Sans -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -30,19 +30,19 @@
     <input type="hidden" id="latitude" name="latitude">
     <input type="hidden" id="longitude" name="longitude">
 
-    <!-- LEGENDA DO MAPA -->
+    <!-- LEGENDA DO MAPA (tipos de local e cor da estrela) -->
     <div class="map-legend">
-        <div class="legend-item"><span class="legend-dot dot-conflito"></span> Conflito</div>
-        <div class="legend-item"><span class="legend-dot dot-humanitaria"></span> Humanitária</div>
-        <div class="legend-item"><span class="legend-dot dot-inundacao"></span> Inundação</div>
-        <div class="legend-item"><span class="legend-dot dot-secafome"></span> Seca/Fome</div>
-        <div class="legend-item"><span class="legend-dot dot-terremoto"></span> Terremoto</div>
+        <div class="legend-item"><span class="legend-icon" style="--cor:#7e3fb0">🏠</span> Centro de Coleta</div>
+        <div class="legend-item"><span class="legend-icon" style="--cor:#27ae60">🐾</span> Veterinário</div>
+        <div class="legend-item"><span class="legend-icon" style="--cor:#e74c3c">🏥</span> Médico</div>
+        <div class="legend-item"><span class="legend-icon" style="--cor:#2980b9">⛑️</span> ONG</div>
+        <div class="legend-item"><span class="legend-star legend-star--cinza">★</span> Não verificado</div>
+        <div class="legend-item"><span class="legend-star legend-star--roxa">★</span> Verificado</div>
     </div>
-
-  
 
     <!-- Script do Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../../script/Comum/Armazenamento.js"></script>
     <script src="../../script/MapaMundi/MapaMundi.js"></script>
 
 </body>

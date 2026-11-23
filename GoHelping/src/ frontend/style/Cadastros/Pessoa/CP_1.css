@@ -132,6 +132,9 @@ body > form > div:last-of-type {
 
 .boton {
   display: block;
+  width: 100%;
+  border: 0;
+  font: inherit;
   padding: 16px;
   border-radius: 12px;
   background: var(--cor-primaria);
@@ -155,7 +158,6 @@ body > form > div:last-of-type {
 .progresso {
   width: min(100% - 32px, 480px);
   margin: 16px auto 0;
-  padding: 0 16px;
 }
 
 .progresso p {
@@ -177,4 +179,82 @@ body > form > div:last-of-type {
   height: 100%;
   border-radius: 4px;
   background: var(--cor-primaria);
+}
+
+/* =========================================
+   RESPONSIVIDADE (celular, tablet e PC)
+   ========================================= */
+
+/* topo respeita o notch / barra do sistema e acompanha a largura do conteúdo */
+body > div:first-of-type {
+  padding-top: calc(20px + env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px), calc((100% - var(--largura-conteudo, 480px)) / 2));
+  padding-right: max(16px, env(safe-area-inset-right, 0px), calc((100% - var(--largura-conteudo, 480px)) / 2));
+}
+
+input, select, button {
+  max-width: 100%;
+  font-size: 1rem; /* 16px: evita zoom automático no iPhone */
+}
+
+/* tablet e PC: coluna um pouco mais larga e mais espaço */
+@media (min-width: 768px) {
+  :root {
+    --largura-conteudo: 560px;
+  }
+
+  form, .progresso {
+    width: min(100% - 48px, var(--largura-conteudo));
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* PC grande */
+@media (min-width: 1200px) {
+  form, .progresso {
+    margin-top: 32px;
+  }
+}
+
+/* celular deitado (pouca altura): os botões não ficam presos no rodapé */
+@media (max-height: 500px) and (orientation: landscape) {
+  body > form > div:last-of-type {
+    position: static;
+    padding-top: 16px;
+  }
+}
+
+/* telas muito estreitas: botões lado a lado passam a ficar um embaixo do outro */
+@media (max-width: 340px) {
+  .acoes {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (hover: none) {
+  .boton:hover, .boton-secundario:hover, .boton-azul:hover {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.ja-tem-conta {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--cor-cinza);
+}
+
+.ja-tem-conta a {
+  color: var(--cor-azul);
+  font-weight: 700;
 }
